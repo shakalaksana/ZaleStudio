@@ -44,28 +44,7 @@ Project Zale/
 
 ---
 
-## 🚀 Cara Deploy ke Netlify (via GitHub)
 
-Ikuti langkah-langkah mudah berikut untuk mengonlinekan website ZALE Anda secara gratis menggunakan Netlify yang terhubung ke GitHub:
-
-### Langkah 1: Push Project ke GitHub
-1. Masuk ke akun [GitHub](https://github.com/) Anda.
-2. Buat repository baru dengan mengklik tombol **New** (Beri nama misalnya: `zale-landingpage`).
-3. Upload seluruh file di dalam folder `Project Zale` Anda (termasuk folder `assets` berisi gambar `bg.jpg`) ke repository tersebut.
-4. Klik **Commit changes** untuk menyimpan file di GitHub.
-
-### Langkah 2: Hubungkan ke Netlify
-1. Masuk ke dashboard [Netlify](https://www.netlify.com/) (Daftar/Login menggunakan akun GitHub Anda agar lebih cepat).
-2. Di halaman utama dashboard Netlify, klik tombol **Add new site** lalu pilih **Import from Git**.
-3. Pilih **GitHub** sebagai Git provider Anda.
-4. Cari dan pilih nama repository yang baru Anda buat tadi (misal: `zale-landingpage`).
-
-### Langkah 3: Konfigurasi & Deploy
-1. Di bagian konfigurasi deploy (*Site settings and deploy*):
-   - **Build command:** Kosongkan saja (karena ini web statis murni).
-   - **Publish directory:** Kosongkan saja (atau isi dengan tanda titik `.` / `./`).
-2. Klik tombol **Deploy zale-landingpage** di bagian bawah.
-3. Tunggu sekitar 10-30 detik. Netlify akan memberikan URL acak gratis (contoh: `https://creative-style-12345.netlify.app`). Anda bisa mengakses link tersebut untuk melihat web Anda yang sudah online!
 
 > [!TIP]
 > Anda bisa mengubah URL acak pemberian Netlify tersebut dengan nama brand Anda (misal: `zale.netlify.app`) secara gratis melalui menu **Site Configuration** > **Domain Management** > **Options** > **Edit site name** di dashboard Netlify Anda.

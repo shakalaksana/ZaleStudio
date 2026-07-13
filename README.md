@@ -1,0 +1,71 @@
+# ZALE — Two Characters. One Balance.
+
+Landing page minimalis, modern, dan estetik untuk brand fashion/streetwear lokal **ZALE**. Didesain dengan tema *Liquid Glassmorphism* (efek kaca transparan) dengan aksen warna *Cobalt Blue* dan *Cream* yang berani, dinamis, dan menarik bagi kalangan anak muda.
+
+Situs ini berupa landing page statis murni (1 file HTML lengkap dengan CSS dan JavaScript inline) sehingga sangat ringan, cepat dimuat, dan mudah di-deploy.
+
+---
+
+## ✨ Fitur Utama
+
+1. **Liquid Glassmorphism Aesthetic**
+   - Panel kartu, navbar, tombol, dan modal menggunakan efek kaca transparan (`rgba(255, 255, 255, 0.6)`) dengan efek blur latar belakang (`backdrop-filter: blur(12px)`) yang dinamis.
+   - Dilengkapi efek pantulan cahaya (*glare*) dan animasi kilau kaca (*shimmer*) saat kursor di-hover.
+
+2. **Spacious Typography (Plus Jakarta Sans)**
+   - Menggunakan font *Plus Jakarta Sans* secara eksklusif dengan pengaturan jarak huruf (*letter-spacing*) dan tinggi baris (*line-height*) yang longgar untuk memberikan kesan editorial kelas atas dan "ruang bernapas" pada setiap kata.
+
+3. **⚙️ WhatsApp Size Selector (Pemesanan Dinamis)**
+   - Pembeli dapat memilih ukuran baju (S, M, L, XL, XXL) langsung di halaman web sebelum memesan.
+   - Ketika tombol **Order Now** diklik, tautan WhatsApp akan terbuat secara dinamis otomatis mencantumkan ukuran yang dipilih (contoh: *"Hallo, saya mau order Zale T-Shirt size L"*).
+
+4. **📏 Interactive Size Chart Modal (Panduan Ukuran)**
+   - Pop-up modal interaktif yang menampilkan tabel panduan ukuran detail baju.
+   - Menggunakan efek transisi *fade-in* & *scale-up* yang halus dan performa yang dioptimalkan. Dapat ditutup via klik di luar modal, tombol silang (X), tombol tutup, maupun tombol **Escape (Esc)**.
+
+5. **🎯 Hitbox Kontak Diperluas**
+   - Seluruh area kartu kontak (WhatsApp, Instagram, Email) dapat diklik secara langsung untuk membuka tautan terkait, mempermudah navigasi bagi pengguna mobile.
+
+6. **📱 Fully Responsive Layout**
+   - Dioptimalkan secara penuh untuk kenyamanan tampilan di layar Desktop, Tablet, hingga Handphone kecil (mobile friendly).
+
+---
+
+## 📁 Struktur Folder
+
+```text
+Project Zale/
+│
+├── index.html         # File utama website (HTML, CSS, JS terpadu)
+├── README.md          # File panduan dan deskripsi repository ini
+└── assets/            # Folder penyimpanan aset gambar
+    └── bg.jpg         # Gambar latar belakang (background) website
+```
+
+---
+
+## 🚀 Cara Deploy ke Netlify (via GitHub)
+
+Ikuti langkah-langkah mudah berikut untuk mengonlinekan website ZALE Anda secara gratis menggunakan Netlify yang terhubung ke GitHub:
+
+### Langkah 1: Push Project ke GitHub
+1. Masuk ke akun [GitHub](https://github.com/) Anda.
+2. Buat repository baru dengan mengklik tombol **New** (Beri nama misalnya: `zale-landingpage`).
+3. Upload seluruh file di dalam folder `Project Zale` Anda (termasuk folder `assets` berisi gambar `bg.jpg`) ke repository tersebut.
+4. Klik **Commit changes** untuk menyimpan file di GitHub.
+
+### Langkah 2: Hubungkan ke Netlify
+1. Masuk ke dashboard [Netlify](https://www.netlify.com/) (Daftar/Login menggunakan akun GitHub Anda agar lebih cepat).
+2. Di halaman utama dashboard Netlify, klik tombol **Add new site** lalu pilih **Import from Git**.
+3. Pilih **GitHub** sebagai Git provider Anda.
+4. Cari dan pilih nama repository yang baru Anda buat tadi (misal: `zale-landingpage`).
+
+### Langkah 3: Konfigurasi & Deploy
+1. Di bagian konfigurasi deploy (*Site settings and deploy*):
+   - **Build command:** Kosongkan saja (karena ini web statis murni).
+   - **Publish directory:** Kosongkan saja (atau isi dengan tanda titik `.` / `./`).
+2. Klik tombol **Deploy zale-landingpage** di bagian bawah.
+3. Tunggu sekitar 10-30 detik. Netlify akan memberikan URL acak gratis (contoh: `https://creative-style-12345.netlify.app`). Anda bisa mengakses link tersebut untuk melihat web Anda yang sudah online!
+
+> [!TIP]
+> Anda bisa mengubah URL acak pemberian Netlify tersebut dengan nama brand Anda (misal: `zale.netlify.app`) secara gratis melalui menu **Site Configuration** > **Domain Management** > **Options** > **Edit site name** di dashboard Netlify Anda.

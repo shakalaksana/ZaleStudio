@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZALE — Two Characters. One Balance.</title>
+  <meta name="description" content="ZALE lahir dari satu keyakinan: tidak ada cerita yang sama. Dibuat untuk mereka yang berani tampil beda.">
+
+  <!-- Google Fonts: Plus Jakarta Sans (Exclusively Used for Spacious, Elegant-Minimalist Streetwear Aesthetic) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================
+       RESET & BASE
+    ============================ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+      color: #1a1a1a;
+      line-height: 1.75;
+      letter-spacing: 0.04em;
+      word-spacing: 0.02em;
+      min-height: 100vh;
+      overflow-x: hidden;
+      /* Fallback background jika foto tidak ada */
+      background: linear-gradient(160deg, #e8ecf8 0%, #f5f5f7 100%);
+    }
+
+    /* ============================
+       BACKGROUND FULL-SCREEN
+       <!-- GANTI BACKGROUND DI SINI -->
+       Ganti url() di bawah dengan path foto Anda.
+       File saat ini: assets/bg.jpg
+    ============================ */
+    .page-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      /* GANTI BACKGROUND DI SINI — ganti 'assets/bg.jpg' dengan path foto lain jika perlu */
+      background: url('assets/bg.jpg') center/cover no-repeat,
+                  linear-gradient(135deg, #2b35af 0%, #3a45c0 40%, #e8ecf8 100%);
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* ============================
+       LIQUID GLASS MIXIN (via class)
+    ============================ */
+    .glass {
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 8px 32px rgba(43, 53, 175, 0.1);
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Efek kilau pantulan cahaya (pseudo-element) */
+    .glass::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.05) 100%);
+      pointer-events: none;
+      border-radius: 20px 20px 0 0;
+    }
+
+    /* Hilangkan efek kilau di kartu kontak & tentang kami */
+    .contact-item.glass::before,
+    .about-card.glass::before {
+      display: none;
+    }
+
+    /* ============================
+       SHIMMER HOVER (kaca berkilau)
+    ============================ */
+    .shimmer-hover {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .shimmer-hover::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -75%;
+      width: 50%;
+      height: 200%;
+      background: linear-gradient(
+        105deg,
+        transparent 40%,
+        rgba(255, 255, 255, 0.5) 45%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 55%
+      );
+      transform: translateX(-100%);
+      transition: none;
+      pointer-events: none;
+    }
+
+    .shimmer-hover:hover::after {
+      animation: shimmerSlide 0.7s ease forwards;
+    }
+
+    @keyframes shimmerSlide {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(350%); }
+    }
+
+    /* ============================
+       TYPOGRAPHY
+    ============================ */
+    h1, h2, h3 {
+      color: #1a1a1a;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    p {
+      color: #4a4a4a;
+      letter-spacing: 0.03em;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      margin-bottom: 0.5rem;
+      text-align: center;
+      color: #ffffff;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+      margin-bottom: 2.5rem;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+      letter-spacing: 0.08em;
+    }
+
+    /* ============================
+       BLUE ACCENT (sesuai background cobalt)
+    ============================ */
+    .accent-gradient {
+      background: linear-gradient(135deg, #2b35af, #4a5ae8, #6b7cf0);
+    }
+
+    .accent-text {
+      background: linear-gradient(135deg, #2b35af, #4a5ae8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ============================
+       SECTION SPACING
+    ============================ */
+    section {
+      padding: 5rem 1.5rem;
+      position: relative;
+    }
+
+    /* Frosted overlay per section agar teks terbaca */
+    section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(43, 53, 175, 0.25);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Hero tidak perlu overlay karena sudah ada backdrop sendiri */
+    .hero::before {
+      background: rgba(43, 53, 175, 0.35);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+    }
+
+    section > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* ============================
+       A. NAVBAR (Sticky + Glass)
+    ============================ */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 0.8rem 1.5rem;
+      background: rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      background: rgba(255, 255, 255, 0.75);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar-logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 6px;
+      color: #1a1a1a;
+      text-decoration: none;
+    }
+
+    .navbar-menu {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .navbar-menu a {
+      text-decoration: none;
+      color: #4a4a4a;
+      font-size: 0.9rem;
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.3s ease;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .navbar-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #2b35af, #4a5ae8);
+      transition: width 0.3s ease;
+    }
+
+    .navbar-menu a:hover,
+    .navbar-menu a.active {
+      color: #1a1a1a;
+    }
+
+    .navbar-menu a:hover::after,
+    .navbar-menu a.active::after {
+      width: 100%;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #1a1a1a;
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* ============================
+       B. HERO SECTION
+    ============================ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 7rem 1.5rem 5rem;
+    }
+
+    .hero-content {
+      max-width: 820px;
+    }
+
+    /* Brand Name */
+    .hero-brand {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(4rem, 14vw, 8rem);
+      font-weight: 700;
+      letter-spacing: clamp(14px, 3.5vw, 36px);
+      line-height: 1;
+      margin-bottom: 2.5rem;
+      color: #ffffff;
+      text-shadow:
+        0 2px 20px rgba(0, 0, 0, 0.25),
+        0 0 60px rgba(43, 53, 175, 0.3);
+      text-transform: uppercase;
+    }
+
+    /* Typographic Poetry Block */
+    .hero-poetry {
+      margin-bottom: 2rem;
+    }
+
+    .hero-line {
+      display: block;
+      color: #ffffff;
+      line-height: 1.5;
+      margin-bottom: 0.35rem;
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Line 1: Elegant Medium weight */
+    .hero-line-1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.1rem, 3.2vw, 1.8rem);
+      font-weight: 300;
+      opacity: 0.95;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.2rem;
+      line-height: 1.8;
+    }
+
+    /* Line 2: Bold statement weight */
+    .hero-line-2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.3rem, 3.8vw, 2.3rem);
+      font-weight: 600;
+      opacity: 1;
+      letter-spacing: 0.06em;
+      line-height: 1.8;
+    }
+
+    .hero-line-2 em {
+      font-style: normal;
+      font-weight: 800;
+      position: relative;
+      background: linear-gradient(135deg, #ffffff, rgba(255,255,255,0.7));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Divider line */
+    .hero-divider {
+      width: 40px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.5);
+      margin: 2.2rem auto;
+      border: none;
+    }
+
+    /* Tagline — GANTI TAGLINE DI SINI */
+    .hero-tagline {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(0.7rem, 1.5vw, 0.85rem);
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+      letter-spacing: clamp(6px, 1.5vw, 12px);
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Staggered entrance animation */
+    .hero-stagger {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: heroFadeUp 0.7s ease forwards;
+    }
+
+    .hero-stagger:nth-child(1) { animation-delay: 0.1s; }
+    .hero-stagger:nth-child(2) { animation-delay: 0.25s; }
+    .hero-stagger:nth-child(3) { animation-delay: 0.4s; }
+    .hero-stagger:nth-child(4) { animation-delay: 0.55s; }
+    .hero-stagger:nth-child(5) { animation-delay: 0.7s; }
+    .hero-stagger:nth-child(6) { animation-delay: 0.85s; }
+    .hero-stagger:nth-child(7) { animation-delay: 1.0s; }
+
+    @keyframes heroFadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 2rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      min-height: 48px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2b35af, #4a5ae8);
+      color: #ffffff;
+      border: none;
+      box-shadow: 0 4px 16px rgba(43, 53, 175, 0.35);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 6px 24px rgba(43, 53, 175, 0.5);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.35);
+      box-shadow: 0 4px 16px rgba(255, 255, 255, 0.2);
+    }
+
+    /* ============================
+       C. PRODUK / KOLEKSI (Grid)
+    ============================ */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      padding: 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      border-radius: 20px;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 48px rgba(43, 53, 175, 0.2);
+    }
+
+    .product-img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      background: linear-gradient(160deg, #1e2788 0%, #2b35af 40%, #4a5ae8 100%);
+      border-radius: 20px 20px 0 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle pattern overlay on product image */
+    .product-img::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(255,255,255,0.04) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .product-icon {
+      position: relative;
+      z-index: 1;
+    }
+
+    .product-icon svg {
+      width: 64px;
+      height: 64px;
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.25);
+      stroke-width: 1.5;
+    }
+
+    .product-coming {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .product-coming .coming-label {
+      display: block;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 0.5rem;
+    }
+
+    .product-coming .coming-title {
+      display: block;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 2px;
+    }
+
+    .product-info {
+      padding: 1.4rem 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .product-info h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.04em;
+    }
+
+    .product-info p {
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    .product-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 50px;
+      background: transparent;
+      color: #2b35af;
+      border: 1px solid rgba(43, 53, 175, 0.3);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Order Now Button */
+    .btn-order {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.75rem 1.2rem;
+      margin-top: 0.8rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: #ffffff;
+      background: linear-gradient(135deg, #2b35af, #4a5ae8);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      min-height: 44px;
+    }
+
+    .btn-order:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(43, 53, 175, 0.4);
+    }
+
+    .btn-order svg {
+      width: 16px;
+      height: 16px;
+      fill: #ffffff;
+      flex-shrink: 0;
+    }
+
+    /* Size Selector Dropdown */
+    .size-selector-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+    }
+
+    .size-selector-label {
+      font-weight: 500;
+      color: #4a4a4a;
+    }
+
+    .size-select {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      background: rgba(255, 255, 255, 0.45);
+      border: 1px solid rgba(43, 53, 175, 0.15);
+      border-radius: 8px;
+      padding: 0.35rem 0.8rem;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.25s ease;
+      min-height: 38px;
+    }
+
+    .size-select:hover, .size-select:focus {
+      background: rgba(255, 255, 255, 0.7);
+      border-color: #2b35af;
+      box-shadow: 0 0 10px rgba(43, 53, 175, 0.1);
+    }
+
+    /* Size Chart Trigger Link */
+    .btn-size-chart-trigger {
+      background: none;
+      border: none;
+      color: #2b35af;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-decoration: underline;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      padding: 0.2rem 0;
+      transition: color 0.25s ease;
+      display: inline-block;
+    }
+
+    .btn-size-chart-trigger:hover {
+      color: #1a237e;
+    }
+
+    /* Size Chart Modal Overlay */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-overlay-bg {
+      position: absolute;
+      inset: 0;
+      background: rgba(14, 18, 58, 0.45);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .modal-box {
+      position: relative;
+      width: 100%;
+      max-width: 550px;
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      border-radius: 24px;
+      box-shadow: 0 24px 64px rgba(43, 53, 175, 0.15);
+      padding: 2.2rem 2rem;
+      transform: scale(0.9);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 2001;
+    }
+
+    .modal-overlay.active .modal-box {
+      transform: scale(1);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      padding-bottom: 0.8rem;
+    }
+
+    .modal-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #1a1a1a;
+      text-transform: uppercase;
+    }
+
+    .modal-close-x {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      font-weight: 300;
+      cursor: pointer;
+      color: #888;
+      padding: 0.2rem;
+      line-height: 1;
+      transition: color 0.25s ease;
+    }
+
+    .modal-close-x:hover {
+      color: #1a1a1a;
+    }
+
+    /* Modal Table Styling */
+    .size-table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .size-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+
+    .size-table th {
+      background: rgba(43, 53, 175, 0.08);
+      color: #2b35af;
+      font-weight: 600;
+      padding: 0.8rem 1rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .size-table td {
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+      color: #4a4a4a;
+    }
+
+    .size-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .size-table tr:hover td {
+      background: rgba(43, 53, 175, 0.02);
+    }
+
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .btn-modal-close {
+      padding: 0.6rem 1.8rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      cursor: pointer;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      background: transparent;
+      color: #4a4a4a;
+      transition: all 0.25s ease;
+    }
+
+    .btn-modal-close:hover {
+      background: rgba(0, 0, 0, 0.04);
+      color: #1a1a1a;
+      border-color: rgba(0, 0, 0, 0.3);
+    }
+
+
+
+    /* ============================
+       D. TENTANG KAMI
+    ============================ */
+    .about-card {
+      max-width: 750px;
+      margin: 0 auto;
+      padding: 3rem 2.5rem;
+      text-align: center;
+    }
+
+    /* GANTI TEKS TENTANG KAMI DI SINI */
+    .about-card p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #4a4a4a;
+    }
+
+    .about-card .about-highlight {
+      display: inline-block;
+      margin-top: 1.5rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 4px;
+    }
+
+    /* ============================
+       E. KONTAK & SOSMED
+    ============================ */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .contact-item {
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .contact-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(43, 53, 175, 0.15);
+    }
+
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2b35af, #4a5ae8);
+    }
+
+    .contact-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: #ffffff;
+    }
+
+    .contact-item h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      transition: color 0.25s ease;
+    }
+
+    .contact-item:hover h3 {
+      color: #2b35af;
+    }
+
+    .contact-item p {
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    .contact-link-text {
+      color: #2b35af;
+      text-decoration: underline;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .contact-item:hover .contact-link-text {
+      color: #1a237e;
+    }
+
+    /* ============================
+       FOOTER
+    ============================ */
+    .footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.8rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #ffffff;
+      background: #141850;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      z-index: 1;
+      letter-spacing: 0.1em;
+    }
+
+    .footer p {
+      color: #ffffff;
+    }
+
+    /* ============================
+       SCROLL REVEAL (fade-in)
+    ============================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================
+       RESPONSIVE — TABLET (max 960px)
+    ============================ */
+    @media (max-width: 960px) {
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 600px;
+      }
+    }
+
+    /* ============================
+       RESPONSIVE — MOBILE (max 768px)
+    ============================ */
+    @media (max-width: 768px) {
+      section {
+        padding: 3.5rem 1rem;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .navbar-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(12px) saturate(180%);
+        -webkit-backdrop-filter: blur(12px) saturate(180%);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease;
+      }
+
+      .navbar-menu.open {
+        max-height: 300px;
+      }
+
+      .navbar-menu li {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+      }
+
+      .navbar-menu a {
+        display: block;
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+      }
+
+      .navbar-menu a::after {
+        display: none;
+      }
+
+      .hero-brand {
+        letter-spacing: 8px;
+        margin-bottom: 1.8rem;
+      }
+
+      .hero-line {
+        margin-bottom: 0.25rem;
+      }
+
+      .hero-divider {
+        margin: 1.2rem auto;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0 1rem;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .products-grid {
+        grid-template-columns: 1fr;
+        gap: 2.2rem;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+      }
+
+      .about-card {
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    /* ============================
+       RESPONSIVE — SMALL PHONE (max 380px)
+    ============================ */
+    @media (max-width: 380px) {
+      .hero-brand {
+        letter-spacing: 4px;
+      }
+
+      .hero-tagline {
+        letter-spacing: 3px;
+      }
+
+      .navbar-logo {
+        font-size: 1.3rem;
+        letter-spacing: 3px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================
+       BACKGROUND FULL-SCREEN
+       GANTI BACKGROUND DI SINI:
+       Ubah style background di .page-background CSS di atas
+       dengan url('path/ke/foto-anda.jpg') center/cover no-repeat
+  ============================ -->
+  <div class="page-background"></div>
+
+  <!-- ============================
+       A. NAVBAR (Sticky + Glass)
+  ============================ -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#home" class="navbar-logo">ZALE</a>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="navbar-menu" id="navMenu">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#produk">Produk</a></li>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============================
+       B. HERO SECTION
+  ============================ -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+
+      <h1 class="hero-brand hero-stagger">ZALE</h1>
+
+      <!-- GANTI TEKS TIPOGRAFI DI SINI -->
+      <div class="hero-poetry">
+        <span class="hero-line hero-line-1 hero-stagger">Tidak semua orang akan berpakaian sama, Dan memang tidak harus.</span>
+        <span class="hero-line hero-line-2 hero-stagger">Karena setiap orang memiliki cerita, setiap cerita memiliki <em>gaya</em>.</span>
+      </div>
+
+      <hr class="hero-divider hero-stagger">
+
+      <!-- GANTI TAGLINE DI SINI -->
+      <p class="hero-tagline hero-stagger">Two characters. One balance.</p>
+
+      <div class="hero-buttons hero-stagger">
+        <a href="#produk" class="btn btn-primary shimmer-hover">Lihat Koleksi</a>
+        <!-- GANTI NOMOR WHATSAPP DI SINI (ganti angka 6281394009760) -->
+        <a href="https://wa.me/6281394009760" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Hubungi Kami</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================
+       C. PRODUK / KOLEKSI
+  ============================ -->
+  <section id="produk">
+    <div class="container">
+      <h2 class="section-title reveal">Koleksi Kami</h2>
+      <p class="section-subtitle reveal">Pilihan terbaik untuk mengekspresikan karakter kamu</p>
+
+      <div class="products-grid">
+
+        <!-- Produk 1: T-Shirt -->
+        <div class="product-card glass shimmer-hover reveal">
+          <div class="product-img">
+            <div class="product-icon">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 8L12 16L16 20L20 16V56H44V16L48 20L52 16L44 8C44 8 40 12 32 12C24 12 20 8 20 8Z"/>
+              </svg>
+            </div>
+            <div class="product-coming">
+              <span class="coming-label">Coming Soon</span>
+              <span class="coming-title">T-Shirt</span>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-badge">New Season</span>
+            <h3>ZALE T-Shirt</h3>
+            <p>Segera hadir</p>
+            <div class="size-selector-wrapper">
+              <span class="size-selector-label">Pilih Ukuran:</span>
+              <select class="size-select" aria-label="Pilih ukuran T-Shirt">
+                <option value="S">S</option>
+                <option value="M" selected>M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
+              </select>
+            </div>
+            <button class="btn-size-chart-trigger">Lihat Panduan Ukuran</button>
+            <button class="btn-order shimmer-hover" data-product="Zale T-Shirt">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Order Now
+            </button>
+          </div>
+        </div>
+
+        <!-- Produk 2: Long Sleeve -->
+        <div class="product-card glass shimmer-hover reveal">
+          <div class="product-img">
+            <div class="product-icon">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 8L8 16L12 44L18 40L18 56H46V40L52 44L56 16L42 8C42 8 38 12 32 12C26 12 22 8 22 8Z"/>
+              </svg>
+            </div>
+            <div class="product-coming">
+              <span class="coming-label">Coming Soon</span>
+              <span class="coming-title">Long Sleeve</span>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-badge">New Season</span>
+            <h3>ZALE Long Sleeve</h3>
+            <p>Segera hadir</p>
+            <div class="size-selector-wrapper">
+              <span class="size-selector-label">Pilih Ukuran:</span>
+              <select class="size-select" aria-label="Pilih ukuran Long Sleeve">
+                <option value="S">S</option>
+                <option value="M" selected>M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
+              </select>
+            </div>
+            <button class="btn-size-chart-trigger">Lihat Panduan Ukuran</button>
+            <button class="btn-order shimmer-hover" data-product="Zale Long Sleeve">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Order Now
+            </button>
+          </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ============================
+       D. TENTANG KAMI
+  ============================ -->
+  <section id="tentang">
+    <div class="container">
+      <h2 class="section-title reveal">Tentang Kami</h2>
+      <p class="section-subtitle reveal">Kenali lebih dekat siapa kami</p>
+
+      <div class="about-card glass reveal">
+        <p>
+          ZALE lahir dari satu keyakinan: tidak ada cerita yang sama. Dan di situlah keindahannya.
+          Kami bukan sekadar menjual pakaian—kami merancang ruang untuk ekspresi.
+          Untuk mereka yang percaya bahwa perbedaan adalah kekuatan, dan gaya adalah cara terbaik
+          untuk memperkenalkan diri tanpa berkata-kata.
+        </p>
+        <span class="about-highlight accent-text">— ZALE STUDIO</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       E. KONTAK & SOSMED
+  ============================ -->
+  <section id="kontak">
+    <div class="container">
+      <h2 class="section-title reveal">Hubungi Kami</h2>
+      <p class="section-subtitle reveal">Kami selalu siap untuk terhubung</p>
+
+      <div class="contact-grid">
+
+        <!-- WhatsApp — GANTI NOMOR WHATSAPP DI SINI -->
+        <a href="https://wa.me/6281394009760" target="_blank" rel="noopener noreferrer" class="contact-item glass shimmer-hover reveal">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <h3>WhatsApp</h3>
+          <p>Chat langsung dengan kami</p>
+          <span class="contact-link-text">+62 813-9400-9760</span>
+        </a>
+
+        <!-- Instagram — GANTI LINK INSTAGRAM DI SINI -->
+        <a href="https://instagram.com/studiozale" target="_blank" rel="noopener noreferrer" class="contact-item glass shimmer-hover reveal">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </div>
+          <h3>Instagram</h3>
+          <p>Follow update terbaru</p>
+          <span class="contact-link-text">@studiozale</span>
+        </a>
+
+        <!-- Email — GANTI EMAIL DI SINI -->
+        <a href="mailto:hello@zale.com" class="contact-item glass shimmer-hover reveal">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </div>
+          <h3>Email</h3>
+          <p>Kirim pesan ke kami</p>
+          <span class="contact-link-text">hello@zale.com</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       FOOTER
+  ============================ -->
+  <footer class="footer">
+    <p>&copy; 2026 ZALE. All rights reserved.</p>
+  </footer>
+
+  <!-- ============================
+       SIZE CHART MODAL POP-UP
+  ============================ -->
+  <div class="modal-overlay" id="sizeModal">
+    <div class="modal-overlay-bg"></div>
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">Panduan Ukuran (Size Chart)</h3>
+        <button class="modal-close modal-close-x" aria-label="Tutup">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="size-table-container">
+          <table class="size-table">
+            <thead>
+              <tr>
+                <th>Size</th>
+                <th>Panjang (cm)</th>
+                <th>Lebar Dada (cm)</th>
+                <th>Panjang Lengan (cm)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>S</td>
+                <td>68</td>
+                <td>48</td>
+                <td>20</td>
+              </tr>
+              <tr>
+                <td>M</td>
+                <td>70</td>
+                <td>50</td>
+                <td>21</td>
+              </tr>
+              <tr>
+                <td>L</td>
+                <td>72</td>
+                <td>52</td>
+                <td>22</td>
+              </tr>
+              <tr>
+                <td>XL</td>
+                <td>74</td>
+                <td>54</td>
+                <td>23</td>
+              </tr>
+              <tr>
+                <td>XXL</td>
+                <td>76</td>
+                <td>56</td>
+                <td>24</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-modal-close modal-close">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================
+       JAVASCRIPT
+  ============================ -->
+  <script>
+    (function() {
+      'use strict';
+
+      // === HAMBURGER MENU ===
+      var hamburger = document.getElementById('hamburger');
+      var navMenu = document.getElementById('navMenu');
+
+      hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('open');
+        navMenu.classList.toggle('open');
+      });
+
+      // Tutup menu saat klik link (mobile)
+      var navLinks = navMenu.querySelectorAll('a');
+      for (var i = 0; i < navLinks.length; i++) {
+        navLinks[i].addEventListener('click', function() {
+          hamburger.classList.remove('open');
+          navMenu.classList.remove('open');
+        });
+      }
+
+      // === NAVBAR SCROLL (semakin solid saat scroll) ===
+      var navbar = document.getElementById('navbar');
+      var scrollThreshold = 50;
+
+      function handleNavScroll() {
+        if (window.scrollY > scrollThreshold) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      }
+
+      window.addEventListener('scroll', handleNavScroll, { passive: true });
+
+      // === SCROLL SPY (Intersection Observer) ===
+      var sections = document.querySelectorAll('section[id]');
+      var menuLinks = document.querySelectorAll('.navbar-menu a');
+
+      var observerOptions = {
+        root: null,
+        rootMargin: '-40% 0px -60% 0px',
+        threshold: 0
+      };
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var targetId = entry.target.getAttribute('id');
+            menuLinks.forEach(function(link) {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + targetId) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      sections.forEach(function(section) {
+        observer.observe(section);
+      });
+
+      // === SCROLL REVEAL (fade-in) ===
+      var reveals = document.querySelectorAll('.reveal');
+
+      var revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target); // hanya animasi sekali
+          }
+        });
+      }, {
+        root: null,
+        rootMargin: '0px 0px -60px 0px',
+        threshold: 0.1
+      });
+
+      reveals.forEach(function(el) {
+        revealObserver.observe(el);
+      });
+
+      // === SIZE CHART MODAL ===
+      var modal = document.getElementById('sizeModal');
+      var openBtns = document.querySelectorAll('.btn-size-chart-trigger');
+      var closeBtns = document.querySelectorAll('.modal-close, .modal-overlay-bg');
+
+      openBtns.forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      closeBtns.forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      });
+
+      // Close modal on Escape key press
+      window.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+
+      // === DYNAMIC WHATSAPP ORDER ===
+      var orderButtons = document.querySelectorAll('.btn-order');
+      orderButtons.forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          // Find size select in same card
+          var card = this.closest('.product-info');
+          var selectEl = card.querySelector('.size-select');
+          var size = selectEl.value;
+          var product = this.getAttribute('data-product');
+          var waNumber = "6281394009760"; // Nomor WhatsApp Utama
+          var message = "Hallo, saya mau order " + product + " size " + size;
+          var waUrl = "https://wa.me/" + waNumber + "?text=" + encodeURIComponent(message);
+          window.open(waUrl, '_blank', 'noopener,noreferrer');
+        });
+      });
+
+    })();
+  </script>
+
+</body>
+</html>

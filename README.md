@@ -46,5 +46,4 @@ Project Zale/
 
 
 
-> [!TIP]
-> Anda bisa mengubah URL acak pemberian Netlify tersebut dengan nama brand Anda (misal: `zale.netlify.app`) secara gratis melalui menu **Site Configuration** > **Domain Management** > **Options** > **Edit site name** di dashboard Netlify Anda.
+

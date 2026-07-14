@@ -6,12 +6,159 @@
   <title>ZALE — Two Characters. One Balance.</title>
   <meta name="description" content="ZALE lahir dari satu keyakinan: tidak ada cerita yang sama. Dibuat untuk mereka yang berani tampil beda.">
 
-  <!-- Google Fonts: Plus Jakarta Sans (Exclusively Used for Spacious, Elegant-Minimalist Streetwear Aesthetic) -->
+  <!-- Google Fonts: Plus Jakarta Sans + Gothic/Blackletter fonts for logo (Grenze Gotisch & UnifrakturCook) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Grenze+Gotisch:wght@600;700;800&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+
+  <!--
+    FONT CELANDINE OUTLINE — INSTRUKSI:
+    Jika Anda memiliki file font Celandine Outline (.woff2 / .woff / .ttf),
+    1. Buat folder 'fonts/' di dalam folder project
+    2. Letakkan file fontnya di dalam folder fonts/
+    3. Hapus tanda komentar pada blok @font-face di bawah ini
+    4. Ganti nama file di url() sesuai nama file font Anda
 
   <style>
+    @font-face {
+      font-family: 'Celandine Outline';
+      src: url('fonts/celandine-outline.woff2') format('woff2'),
+           url('fonts/celandine-outline.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+  </style>
+  -->
+
+  <style>
+    /* ============================
+       CSS CUSTOM PROPERTIES (Light Mode Default)
+    ============================ */
+    :root {
+      /* Surface & Background */
+      --bg-fallback: linear-gradient(160deg, #e8e8e8 0%, #f5f5f5 100%);
+      --bg-gradient: linear-gradient(135deg, #333 0%, #555 40%, #e8e8e8 100%);
+      --overlay-section: rgba(80, 80, 80, 0.2);
+      --overlay-hero: rgba(40, 40, 40, 0.35);
+
+      /* Glass */
+      --glass-bg: rgba(255, 255, 255, 0.55);
+      --glass-border: rgba(255, 255, 255, 0.85);
+      --glass-shadow: rgba(0, 0, 0, 0.08);
+
+      /* Text */
+      --text-primary: #1a1a1a;
+      --text-secondary: #4a4a4a;
+      --text-muted: #888;
+      --text-on-dark: #ffffff;
+
+      /* Accent (monochrome) */
+      --accent: #1a1a1a;
+      --accent-light: #333;
+      --accent-lighter: #555;
+      --accent-gradient: linear-gradient(135deg, #1a1a1a, #444);
+      --accent-shadow: rgba(0, 0, 0, 0.25);
+
+      /* Product card image */
+      --product-bg: linear-gradient(160deg, #1a1a1a 0%, #333 40%, #555 100%);
+
+      /* Navbar */
+      --nav-bg: rgba(255, 255, 255, 0.35);
+      --nav-bg-scrolled: rgba(255, 255, 255, 0.75);
+      --nav-border: rgba(255, 255, 255, 0.6);
+
+      /* Footer */
+      --footer-bg: #111;
+      --footer-border: rgba(255, 255, 255, 0.08);
+
+      /* Modal */
+      --modal-overlay: rgba(14, 14, 14, 0.45);
+      --modal-bg: rgba(255, 255, 255, 0.65);
+      --modal-border: rgba(255, 255, 255, 0.85);
+      --modal-shadow: rgba(0, 0, 0, 0.12);
+      --table-header-bg: rgba(0, 0, 0, 0.06);
+      --table-header-color: #1a1a1a;
+      --table-hover: rgba(0, 0, 0, 0.02);
+
+      /* Badge */
+      --badge-color: #1a1a1a;
+      --badge-border: rgba(0, 0, 0, 0.25);
+
+      /* Size select */
+      --select-bg: rgba(255, 255, 255, 0.45);
+      --select-border: rgba(0, 0, 0, 0.12);
+      --select-color: #1a1a1a;
+
+      /* Mobile menu */
+      --mobile-menu-bg: rgba(255, 255, 255, 0.85);
+      --mobile-menu-border: rgba(0, 0, 0, 0.04);
+
+      /* Contact link */
+      --contact-link: #1a1a1a;
+      --contact-link-hover: #000;
+
+      /* Icon bg */
+      --icon-bg: linear-gradient(135deg, #1a1a1a, #444);
+    }
+
+    /* ============================
+       DARK MODE
+    ============================ */
+    [data-theme="dark"] {
+      --bg-fallback: linear-gradient(160deg, #0a0a0a 0%, #1a1a1a 100%);
+      --bg-gradient: linear-gradient(135deg, #111 0%, #222 40%, #0a0a0a 100%);
+      --overlay-section: rgba(0, 0, 0, 0.35);
+      --overlay-hero: rgba(0, 0, 0, 0.5);
+
+      --glass-bg: rgba(30, 30, 30, 0.6);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --glass-shadow: rgba(0, 0, 0, 0.3);
+
+      --text-primary: #f0f0f0;
+      --text-secondary: #c0c0c0;
+      --text-muted: #888;
+      --text-on-dark: #ffffff;
+
+      --accent: #e0e0e0;
+      --accent-light: #ccc;
+      --accent-lighter: #aaa;
+      --accent-gradient: linear-gradient(135deg, #ddd, #999);
+      --accent-shadow: rgba(255, 255, 255, 0.1);
+
+      --product-bg: linear-gradient(160deg, #111 0%, #222 40%, #333 100%);
+
+      --nav-bg: rgba(20, 20, 20, 0.5);
+      --nav-bg-scrolled: rgba(20, 20, 20, 0.85);
+      --nav-border: rgba(255, 255, 255, 0.06);
+
+      --footer-bg: #080808;
+      --footer-border: rgba(255, 255, 255, 0.06);
+
+      --modal-overlay: rgba(0, 0, 0, 0.6);
+      --modal-bg: rgba(30, 30, 30, 0.75);
+      --modal-border: rgba(255, 255, 255, 0.1);
+      --modal-shadow: rgba(0, 0, 0, 0.4);
+      --table-header-bg: rgba(255, 255, 255, 0.06);
+      --table-header-color: #e0e0e0;
+      --table-hover: rgba(255, 255, 255, 0.03);
+
+      --badge-color: #ccc;
+      --badge-border: rgba(255, 255, 255, 0.2);
+
+      --select-bg: rgba(40, 40, 40, 0.6);
+      --select-border: rgba(255, 255, 255, 0.12);
+      --select-color: #e0e0e0;
+
+      --mobile-menu-bg: rgba(20, 20, 20, 0.92);
+      --mobile-menu-border: rgba(255, 255, 255, 0.05);
+
+      --contact-link: #ccc;
+      --contact-link-hover: #fff;
+
+      --icon-bg: linear-gradient(135deg, #444, #666);
+    }
+
     /* ============================
        RESET & BASE
     ============================ */
@@ -28,21 +175,18 @@
 
     body {
       font-family: 'Plus Jakarta Sans', Arial, sans-serif;
-      color: #1a1a1a;
+      color: var(--text-primary);
       line-height: 1.75;
       letter-spacing: 0.04em;
       word-spacing: 0.02em;
       min-height: 100vh;
       overflow-x: hidden;
-      /* Fallback background jika foto tidak ada */
-      background: linear-gradient(160deg, #e8ecf8 0%, #f5f5f7 100%);
+      background: var(--bg-fallback);
+      transition: color 0.3s ease, background 0.3s ease;
     }
 
     /* ============================
-       BACKGROUND FULL-SCREEN
-       <!-- GANTI BACKGROUND DI SINI -->
-       Ganti url() di bawah dengan path foto Anda.
-       File saat ini: assets/bg.jpg
+       BACKGROUND FULL-SCREEN (MONOCHROME)
     ============================ */
     .page-background {
       position: fixed;
@@ -51,25 +195,27 @@
       width: 100%;
       height: 100%;
       z-index: -1;
-      /* GANTI BACKGROUND DI SINI — ganti 'assets/bg.jpg' dengan path foto lain jika perlu */
       background: url('assets/bg.jpg') center/cover no-repeat,
-                  linear-gradient(135deg, #2b35af 0%, #3a45c0 40%, #e8ecf8 100%);
+                  var(--bg-gradient);
       background-size: cover;
       background-position: center;
+      filter: grayscale(100%);
+      will-change: transform;
     }
 
     /* ============================
        LIQUID GLASS MIXIN (via class)
     ============================ */
     .glass {
-      background: rgba(255, 255, 255, 0.55);
-      backdrop-filter: blur(12px) saturate(180%);
-      -webkit-backdrop-filter: blur(12px) saturate(180%);
-      border: 1px solid rgba(255, 255, 255, 0.85);
-      box-shadow: 0 8px 32px rgba(43, 53, 175, 0.1);
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px) saturate(160%);
+      -webkit-backdrop-filter: blur(10px) saturate(160%);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 8px 32px var(--glass-shadow);
       border-radius: 20px;
       position: relative;
       overflow: hidden;
+      transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     /* Efek kilau pantulan cahaya (pseudo-element) */
@@ -80,9 +226,13 @@
       left: 0;
       right: 0;
       height: 50%;
-      background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.05) 100%);
+      background: linear-gradient(135deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.05) 100%);
       pointer-events: none;
       border-radius: 20px 20px 0 0;
+    }
+
+    [data-theme="dark"] .glass::before {
+      background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.01) 100%);
     }
 
     /* Hilangkan efek kilau di kartu kontak & tentang kami */
@@ -131,23 +281,25 @@
        TYPOGRAPHY
     ============================ */
     h1, h2, h3 {
-      color: #1a1a1a;
+      color: var(--text-primary);
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: 700;
       letter-spacing: 0.05em;
+      transition: color 0.3s ease;
     }
 
     p {
-      color: #4a4a4a;
+      color: var(--text-secondary);
       letter-spacing: 0.03em;
+      transition: color 0.3s ease;
     }
 
     .section-title {
       font-size: clamp(1.6rem, 4vw, 2.5rem);
       margin-bottom: 0.5rem;
       text-align: center;
-      color: #ffffff;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      color: var(--text-on-dark);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       letter-spacing: 0.15em;
       text-transform: uppercase;
     }
@@ -157,22 +309,8 @@
       color: rgba(255, 255, 255, 0.8);
       text-align: center;
       margin-bottom: 2.5rem;
-      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
       letter-spacing: 0.08em;
-    }
-
-    /* ============================
-       BLUE ACCENT (sesuai background cobalt)
-    ============================ */
-    .accent-gradient {
-      background: linear-gradient(135deg, #2b35af, #4a5ae8, #6b7cf0);
-    }
-
-    .accent-text {
-      background: linear-gradient(135deg, #2b35af, #4a5ae8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
     }
 
     /* ============================
@@ -188,16 +326,16 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(43, 53, 175, 0.25);
+      background: var(--overlay-section);
       backdrop-filter: blur(2px);
       -webkit-backdrop-filter: blur(2px);
       pointer-events: none;
       z-index: 0;
     }
 
-    /* Hero tidak perlu overlay karena sudah ada backdrop sendiri */
+    /* Hero overlay */
     .hero::before {
-      background: rgba(43, 53, 175, 0.35);
+      background: var(--overlay-hero);
       backdrop-filter: blur(3px);
       -webkit-backdrop-filter: blur(3px);
     }
@@ -223,16 +361,16 @@
       width: 100%;
       z-index: 1000;
       padding: 0.8rem 1.5rem;
-      background: rgba(255, 255, 255, 0.35);
-      backdrop-filter: blur(12px) saturate(180%);
-      -webkit-backdrop-filter: blur(12px) saturate(180%);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.6);
-      transition: background 0.3s ease, box-shadow 0.3s ease;
+      background: var(--nav-bg);
+      backdrop-filter: blur(10px) saturate(160%);
+      -webkit-backdrop-filter: blur(10px) saturate(160%);
+      border-bottom: 1px solid var(--nav-border);
+      transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
 
     .navbar.scrolled {
-      background: rgba(255, 255, 255, 0.75);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      background: var(--nav-bg-scrolled);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     }
 
     .navbar .container {
@@ -242,12 +380,71 @@
     }
 
     .navbar-logo {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 1.6rem;
+      /*
+        Font logo menggunakan Celandine Outline (local) dengan fallback
+        Grenze Gotisch / UnifrakturCook dari Google Fonts.
+        Menggunakan efek outline stroke agar terlihat premium & modern.
+      */
+      font-family: 'Celandine Outline', 'Grenze Gotisch', 'UnifrakturCook', cursive;
+      font-size: 2.1rem;
       font-weight: 700;
-      letter-spacing: 6px;
-      color: #1a1a1a;
+      letter-spacing: 1px;
+      color: transparent;
+      -webkit-text-stroke: 1.2px var(--text-primary);
       text-decoration: none;
+      transition: -webkit-text-stroke-color 0.3s ease;
+      text-transform: lowercase;
+    }
+
+    .navbar-logo:hover {
+      -webkit-text-stroke-color: var(--accent-light);
+    }
+
+    /* Dark mode toggle button */
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--glass-border);
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      background: var(--glass-bg);
+      flex-shrink: 0;
+      margin-left: 1rem;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.08);
+      box-shadow: 0 4px 12px var(--glass-shadow);
+    }
+
+    .theme-toggle svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--text-primary);
+      transition: fill 0.3s ease, transform 0.3s ease;
+    }
+
+    .theme-toggle:hover svg {
+      transform: rotate(15deg);
+    }
+
+    /* Hide/show sun/moon icons */
+    .icon-moon { display: block; }
+    .icon-sun  { display: none; }
+    [data-theme="dark"] .icon-moon { display: none; }
+    [data-theme="dark"] .icon-sun  { display: block; }
+
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 0;
     }
 
     .navbar-menu {
@@ -258,7 +455,7 @@
 
     .navbar-menu a {
       text-decoration: none;
-      color: #4a4a4a;
+      color: var(--text-secondary);
       font-size: 0.9rem;
       font-weight: 500;
       position: relative;
@@ -275,13 +472,13 @@
       left: 0;
       width: 0;
       height: 2px;
-      background: linear-gradient(90deg, #2b35af, #4a5ae8);
+      background: var(--accent-gradient);
       transition: width 0.3s ease;
     }
 
     .navbar-menu a:hover,
     .navbar-menu a.active {
-      color: #1a1a1a;
+      color: var(--text-primary);
     }
 
     .navbar-menu a:hover::after,
@@ -304,9 +501,9 @@
       display: block;
       width: 24px;
       height: 2px;
-      background: #1a1a1a;
+      background: var(--text-primary);
       border-radius: 2px;
-      transition: transform 0.3s ease, opacity 0.3s ease;
+      transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
     }
 
     .hamburger.open span:nth-child(1) {
@@ -335,21 +532,6 @@
       max-width: 820px;
     }
 
-    /* Brand Name */
-    .hero-brand {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: clamp(4rem, 14vw, 8rem);
-      font-weight: 700;
-      letter-spacing: clamp(14px, 3.5vw, 36px);
-      line-height: 1;
-      margin-bottom: 2.5rem;
-      color: #ffffff;
-      text-shadow:
-        0 2px 20px rgba(0, 0, 0, 0.25),
-        0 0 60px rgba(43, 53, 175, 0.3);
-      text-transform: uppercase;
-    }
-
     /* Typographic Poetry Block */
     .hero-poetry {
       margin-bottom: 2rem;
@@ -357,10 +539,10 @@
 
     .hero-line {
       display: block;
-      color: #ffffff;
+      color: var(--text-on-dark);
       line-height: 1.5;
       margin-bottom: 0.35rem;
-      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
     }
 
     /* Line 1: Elegant Medium weight */
@@ -403,7 +585,7 @@
       border: none;
     }
 
-    /* Tagline — GANTI TAGLINE DI SINI */
+    /* Tagline */
     .hero-tagline {
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: clamp(0.7rem, 1.5vw, 0.85rem);
@@ -412,7 +594,7 @@
       letter-spacing: clamp(6px, 1.5vw, 12px);
       text-transform: uppercase;
       margin-bottom: 2.5rem;
-      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
     }
 
     /* Staggered entrance animation */
@@ -428,7 +610,6 @@
     .hero-stagger:nth-child(4) { animation-delay: 0.55s; }
     .hero-stagger:nth-child(5) { animation-delay: 0.7s; }
     .hero-stagger:nth-child(6) { animation-delay: 0.85s; }
-    .hero-stagger:nth-child(7) { animation-delay: 1.0s; }
 
     @keyframes heroFadeUp {
       to {
@@ -466,22 +647,22 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #2b35af, #4a5ae8);
-      color: #ffffff;
+      background: var(--accent-gradient);
+      color: var(--text-on-dark);
       border: none;
-      box-shadow: 0 4px 16px rgba(43, 53, 175, 0.35);
+      box-shadow: 0 4px 16px var(--accent-shadow);
     }
 
     .btn-primary:hover {
-      box-shadow: 0 6px 24px rgba(43, 53, 175, 0.5);
+      box-shadow: 0 6px 24px var(--accent-shadow);
     }
 
     .btn-outline {
       background: rgba(255, 255, 255, 0.2);
       color: #ffffff;
       border: 2px solid rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
     }
 
     .btn-outline:hover {
@@ -509,13 +690,281 @@
 
     .product-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 16px 48px rgba(43, 53, 175, 0.2);
+      box-shadow: 0 16px 48px var(--accent-shadow);
     }
 
     .product-img {
       width: 100%;
       aspect-ratio: 3 / 4;
-      background: linear-gradient(160deg, #1e2788 0%, #2b35af 40%, #4a5ae8 100%);
+      background: var(--product-bg);
+      border-radius: 20px 20px 0 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .product-card:hover .product-img img {
+      transform: scale(1.03);
+    }
+
+    /* Front/Back toggle: back hidden by default */
+    .product-img .img-back {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      z-index: 0;
+    }
+
+    .product-img .img-front {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* When showing-back class is active */
+    .product-img.showing-back .img-front {
+      opacity: 0;
+      z-index: 0;
+    }
+
+    .product-img.showing-back .img-back {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    /* Toggle buttons (Front / Back) */
+    .view-toggle {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0;
+      z-index: 3;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .view-toggle button {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.6);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .view-toggle button.active {
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+    }
+
+    .view-toggle button:hover {
+      color: #fff;
+    }
+
+    /* Zoom hint icon */
+    .zoom-hint {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 3;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .zoom-hint:hover {
+      background: rgba(0,0,0,0.5);
+      transform: scale(1.08);
+    }
+
+    .zoom-hint svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: rgba(255,255,255,0.75);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Subtle vignette overlay on product image */
+    .product-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.12) 100%);
+      pointer-events: none;
+      border-radius: 20px 20px 0 0;
+    }
+
+    /* ============================
+       PRODUCT ZOOM LIGHTBOX
+    ============================ */
+    .product-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .product-lightbox.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .lightbox-bg {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .lightbox-content {
+      position: relative;
+      z-index: 1;
+      max-width: 90vw;
+      max-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      touch-action: none;
+      overflow: hidden;
+    }
+
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 12px;
+      transform-origin: center center;
+      transition: transform 0.15s ease;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 2;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      cursor: pointer;
+      color: #fff;
+      font-size: 1.4rem;
+      font-weight: 300;
+      transition: all 0.25s ease;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255,255,255,0.2);
+      transform: scale(1.08);
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      gap: 0;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .lightbox-nav button {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.6);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 0.5rem 1.2rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .lightbox-nav button.active {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+    }
+
+    .lightbox-nav button:hover {
+      color: #fff;
+    }
+
+    .lightbox-zoom-hint {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,0.5);
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    .lightbox-zoom-hint.hidden {
+      opacity: 0;
+    }
+
+    /* Product icon & coming soon (for placeholder cards) */
+    .product-img-placeholder {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      background: var(--product-bg);
       border-radius: 20px 20px 0 0;
       display: flex;
       flex-direction: column;
@@ -524,17 +973,6 @@
       gap: 1.5rem;
       position: relative;
       overflow: hidden;
-    }
-
-    /* Subtle pattern overlay on product image */
-    .product-img::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 30% 20%, rgba(255,255,255,0.06) 0%, transparent 50%),
-        radial-gradient(circle at 70% 80%, rgba(255,255,255,0.04) 0%, transparent 50%);
-      pointer-events: none;
     }
 
     .product-icon {
@@ -592,7 +1030,7 @@
 
     .product-info p {
       font-size: 0.85rem;
-      color: #888;
+      color: var(--text-muted);
     }
 
     .product-badge {
@@ -604,9 +1042,10 @@
       text-transform: uppercase;
       border-radius: 50px;
       background: transparent;
-      color: #2b35af;
-      border: 1px solid rgba(43, 53, 175, 0.3);
+      color: var(--badge-color);
+      border: 1px solid var(--badge-border);
       margin-bottom: 0.5rem;
+      transition: color 0.3s ease, border-color 0.3s ease;
     }
 
     /* Order Now Button */
@@ -622,8 +1061,8 @@
       font-size: 0.85rem;
       font-weight: 600;
       letter-spacing: 0.08em;
-      color: #ffffff;
-      background: linear-gradient(135deg, #2b35af, #4a5ae8);
+      color: var(--text-on-dark);
+      background: var(--accent-gradient);
       border: none;
       border-radius: 50px;
       cursor: pointer;
@@ -634,7 +1073,7 @@
 
     .btn-order:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(43, 53, 175, 0.4);
+      box-shadow: 0 6px 20px var(--accent-shadow);
     }
 
     .btn-order svg {
@@ -656,16 +1095,17 @@
 
     .size-selector-label {
       font-weight: 500;
-      color: #4a4a4a;
+      color: var(--text-secondary);
+      transition: color 0.3s ease;
     }
 
     .size-select {
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 0.85rem;
       font-weight: 600;
-      color: #1a1a1a;
-      background: rgba(255, 255, 255, 0.45);
-      border: 1px solid rgba(43, 53, 175, 0.15);
+      color: var(--select-color);
+      background: var(--select-bg);
+      border: 1px solid var(--select-border);
       border-radius: 8px;
       padding: 0.35rem 0.8rem;
       cursor: pointer;
@@ -675,16 +1115,16 @@
     }
 
     .size-select:hover, .size-select:focus {
-      background: rgba(255, 255, 255, 0.7);
-      border-color: #2b35af;
-      box-shadow: 0 0 10px rgba(43, 53, 175, 0.1);
+      background: var(--glass-bg);
+      border-color: var(--accent);
+      box-shadow: 0 0 10px var(--glass-shadow);
     }
 
     /* Size Chart Trigger Link */
     .btn-size-chart-trigger {
       background: none;
       border: none;
-      color: #2b35af;
+      color: var(--accent);
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 0.8rem;
       font-weight: 600;
@@ -699,7 +1139,7 @@
     }
 
     .btn-size-chart-trigger:hover {
-      color: #1a237e;
+      color: var(--accent-light);
     }
 
     /* Size Chart Modal Overlay */
@@ -724,24 +1164,24 @@
     .modal-overlay-bg {
       position: absolute;
       inset: 0;
-      background: rgba(14, 18, 58, 0.45);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: var(--modal-overlay);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
     }
 
     .modal-box {
       position: relative;
       width: 100%;
       max-width: 550px;
-      background: rgba(255, 255, 255, 0.65);
-      backdrop-filter: blur(12px) saturate(180%);
-      -webkit-backdrop-filter: blur(12px) saturate(180%);
-      border: 1px solid rgba(255, 255, 255, 0.85);
+      background: var(--modal-bg);
+      backdrop-filter: blur(10px) saturate(160%);
+      -webkit-backdrop-filter: blur(10px) saturate(160%);
+      border: 1px solid var(--modal-border);
       border-radius: 24px;
-      box-shadow: 0 24px 64px rgba(43, 53, 175, 0.15);
+      box-shadow: 0 24px 64px var(--modal-shadow);
       padding: 2.2rem 2rem;
       transform: scale(0.9);
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, border-color 0.3s ease;
       z-index: 2001;
     }
 
@@ -754,7 +1194,7 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 1.5rem;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      border-bottom: 1px solid rgba(128, 128, 128, 0.1);
       padding-bottom: 0.8rem;
     }
 
@@ -762,7 +1202,7 @@
       font-size: 1.2rem;
       font-weight: 700;
       letter-spacing: 0.1em;
-      color: #1a1a1a;
+      color: var(--text-primary);
       text-transform: uppercase;
     }
 
@@ -772,14 +1212,14 @@
       font-size: 1.5rem;
       font-weight: 300;
       cursor: pointer;
-      color: #888;
+      color: var(--text-muted);
       padding: 0.2rem;
       line-height: 1;
       transition: color 0.25s ease;
     }
 
     .modal-close-x:hover {
-      color: #1a1a1a;
+      color: var(--text-primary);
     }
 
     /* Modal Table Styling */
@@ -788,7 +1228,7 @@
       overflow-x: auto;
       margin-bottom: 1.5rem;
       border-radius: 12px;
-      border: 1px solid rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(128, 128, 128, 0.1);
     }
 
     .size-table {
@@ -799,20 +1239,21 @@
     }
 
     .size-table th {
-      background: rgba(43, 53, 175, 0.08);
-      color: #2b35af;
+      background: var(--table-header-bg);
+      color: var(--table-header-color);
       font-weight: 600;
       padding: 0.8rem 1rem;
       letter-spacing: 0.05em;
       text-transform: uppercase;
       font-size: 0.75rem;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(128, 128, 128, 0.1);
     }
 
     .size-table td {
       padding: 0.8rem 1rem;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-      color: #4a4a4a;
+      border-bottom: 1px solid rgba(128, 128, 128, 0.06);
+      color: var(--text-secondary);
+      transition: color 0.3s ease;
     }
 
     .size-table tr:last-child td {
@@ -820,7 +1261,7 @@
     }
 
     .size-table tr:hover td {
-      background: rgba(43, 53, 175, 0.02);
+      background: var(--table-hover);
     }
 
     .modal-footer {
@@ -837,19 +1278,16 @@
       text-transform: uppercase;
       border-radius: 50px;
       cursor: pointer;
-      border: 1px solid rgba(0, 0, 0, 0.15);
+      border: 1px solid var(--badge-border);
       background: transparent;
-      color: #4a4a4a;
+      color: var(--text-secondary);
       transition: all 0.25s ease;
     }
 
     .btn-modal-close:hover {
-      background: rgba(0, 0, 0, 0.04);
-      color: #1a1a1a;
-      border-color: rgba(0, 0, 0, 0.3);
+      background: var(--table-hover);
+      color: var(--text-primary);
     }
-
-
 
     /* ============================
        D. TENTANG KAMI
@@ -861,20 +1299,10 @@
       text-align: center;
     }
 
-    /* GANTI TEKS TENTANG KAMI DI SINI */
     .about-card p {
       font-size: 1.05rem;
       line-height: 1.8;
-      color: #4a4a4a;
-    }
-
-    .about-card .about-highlight {
-      display: inline-block;
-      margin-top: 1.5rem;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 700;
-      font-size: 1.1rem;
-      letter-spacing: 4px;
+      color: var(--text-secondary);
     }
 
     /* ============================
@@ -899,7 +1327,7 @@
 
     .contact-item:hover {
       transform: translateY(-3px);
-      box-shadow: 0 12px 40px rgba(43, 53, 175, 0.15);
+      box-shadow: 0 12px 40px var(--glass-shadow);
     }
 
     .contact-icon {
@@ -910,7 +1338,8 @@
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      background: linear-gradient(135deg, #2b35af, #4a5ae8);
+      background: var(--icon-bg);
+      transition: background 0.3s ease;
     }
 
     .contact-icon svg {
@@ -927,16 +1356,16 @@
     }
 
     .contact-item:hover h3 {
-      color: #2b35af;
+      color: var(--accent);
     }
 
     .contact-item p {
       font-size: 0.85rem;
-      color: #888;
+      color: var(--text-muted);
     }
 
     .contact-link-text {
-      color: #2b35af;
+      color: var(--contact-link);
       text-decoration: underline;
       font-weight: 500;
       font-size: 0.9rem;
@@ -944,7 +1373,7 @@
     }
 
     .contact-item:hover .contact-link-text {
-      color: #1a237e;
+      color: var(--contact-link-hover);
     }
 
     /* ============================
@@ -956,11 +1385,12 @@
       font-size: 0.8rem;
       font-family: 'Plus Jakarta Sans', sans-serif;
       color: #ffffff;
-      background: #141850;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: var(--footer-bg);
+      border-top: 1px solid var(--footer-border);
       position: relative;
       z-index: 1;
       letter-spacing: 0.1em;
+      transition: background 0.3s ease;
     }
 
     .footer p {
@@ -1010,10 +1440,10 @@
         width: 100%;
         flex-direction: column;
         gap: 0;
-        background: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(12px) saturate(180%);
-        -webkit-backdrop-filter: blur(12px) saturate(180%);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+        background: var(--mobile-menu-bg);
+        backdrop-filter: blur(10px) saturate(160%);
+        -webkit-backdrop-filter: blur(10px) saturate(160%);
+        border-bottom: 1px solid var(--nav-border);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
         max-height: 0;
         overflow: hidden;
@@ -1025,7 +1455,7 @@
       }
 
       .navbar-menu li {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+        border-bottom: 1px solid var(--mobile-menu-border);
       }
 
       .navbar-menu a {
@@ -1036,11 +1466,6 @@
 
       .navbar-menu a::after {
         display: none;
-      }
-
-      .hero-brand {
-        letter-spacing: 8px;
-        margin-bottom: 1.8rem;
       }
 
       .hero-line {
@@ -1080,17 +1505,28 @@
        RESPONSIVE — SMALL PHONE (max 380px)
     ============================ */
     @media (max-width: 380px) {
-      .hero-brand {
-        letter-spacing: 4px;
-      }
-
       .hero-tagline {
         letter-spacing: 3px;
       }
 
       .navbar-logo {
+        -webkit-text-stroke-width: 1px;
         font-size: 1.3rem;
         letter-spacing: 3px;
+      }
+    }
+
+    /* ============================
+       PERFORMANCE: Reduced motion for low-spec devices
+    ============================ */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .page-background {
+        will-change: auto;
       }
     }
   </style>
@@ -1098,10 +1534,7 @@
 <body>
 
   <!-- ============================
-       BACKGROUND FULL-SCREEN
-       GANTI BACKGROUND DI SINI:
-       Ubah style background di .page-background CSS di atas
-       dengan url('path/ke/foto-anda.jpg') center/cover no-repeat
+       BACKGROUND FULL-SCREEN (MONOCHROME)
   ============================ -->
   <div class="page-background"></div>
 
@@ -1110,20 +1543,30 @@
   ============================ -->
   <nav class="navbar" id="navbar">
     <div class="container">
-      <a href="#home" class="navbar-logo">ZALE</a>
+      <a href="#home" class="navbar-logo">zale.</a>
 
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div class="navbar-right">
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
-      <ul class="navbar-menu" id="navMenu">
-        <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#produk">Produk</a></li>
-        <li><a href="#tentang">Tentang</a></li>
-        <li><a href="#kontak">Kontak</a></li>
-      </ul>
+        <ul class="navbar-menu" id="navMenu">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#produk">Produk</a></li>
+          <li><a href="#tentang">Tentang</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+        </ul>
+
+        <!-- Dark / Light Mode Toggle -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <!-- Moon icon (shown in light mode) -->
+          <svg class="icon-moon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <!-- Sun icon (shown in dark mode) -->
+          <svg class="icon-sun" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3" stroke-width="2" stroke="currentColor"/><line x1="12" y1="21" x2="12" y2="23" stroke-width="2" stroke="currentColor"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke-width="2" stroke="currentColor"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke-width="2" stroke="currentColor"/><line x1="1" y1="12" x2="3" y2="12" stroke-width="2" stroke="currentColor"/><line x1="21" y1="12" x2="23" y2="12" stroke-width="2" stroke="currentColor"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke-width="2" stroke="currentColor"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke-width="2" stroke="currentColor"/></svg>
+        </button>
+      </div>
     </div>
   </nav>
 
@@ -1132,8 +1575,6 @@
   ============================ -->
   <section class="hero" id="home">
     <div class="hero-content">
-
-      <h1 class="hero-brand hero-stagger">ZALE</h1>
 
       <!-- GANTI TEKS TIPOGRAFI DI SINI -->
       <div class="hero-poetry">
@@ -1165,23 +1606,29 @@
 
       <div class="products-grid">
 
-        <!-- Produk 1: T-Shirt -->
+        <!-- Produk 1: T-Shirt (Front + Back toggle) -->
         <div class="product-card glass shimmer-hover reveal">
-          <div class="product-img">
-            <div class="product-icon">
-              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 8L12 16L16 20L20 16V56H44V16L48 20L52 16L44 8C44 8 40 12 32 12C24 12 20 8 20 8Z"/>
-              </svg>
+          <div class="product-img" id="tshirtImgContainer">
+            <!-- Simpan foto depan ke: assets/tshirt-front.png -->
+            <img class="img-front" src="assets/tshirt-front.png" alt="ZALE T-Shirt — Front View" loading="lazy">
+            <!-- Simpan foto belakang ke: assets/tshirt-back.png -->
+            <img class="img-back" src="assets/tshirt-back.png" alt="ZALE T-Shirt — Back View" loading="lazy">
+
+            <!-- Toggle Front / Back -->
+            <div class="view-toggle">
+              <button class="active" data-view="front">Front</button>
+              <button data-view="back">Back</button>
             </div>
-            <div class="product-coming">
-              <span class="coming-label">Coming Soon</span>
-              <span class="coming-title">T-Shirt</span>
-            </div>
+
+            <!-- Zoom icon -->
+            <button class="zoom-hint" aria-label="Zoom gambar" data-front="assets/tshirt-front.png" data-back="assets/tshirt-back.png">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            </button>
           </div>
           <div class="product-info">
-            <span class="product-badge">New Season</span>
+            <span class="product-badge">Drop 01</span>
             <h3>ZALE T-Shirt</h3>
-            <p>Segera hadir</p>
+            <p>"This is not fashion. This is a personal archive."</p>
             <div class="size-selector-wrapper">
               <span class="size-selector-label">Pilih Ukuran:</span>
               <select class="size-select" aria-label="Pilih ukuran T-Shirt">
@@ -1200,9 +1647,9 @@
           </div>
         </div>
 
-        <!-- Produk 2: Long Sleeve -->
+        <!-- Produk 2: Long Sleeve (Coming Soon) -->
         <div class="product-card glass shimmer-hover reveal">
-          <div class="product-img">
+          <div class="product-img-placeholder">
             <div class="product-icon">
               <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22 8L8 16L12 44L18 40L18 56H46V40L52 44L56 16L42 8C42 8 38 12 32 12C26 12 22 8 22 8Z"/>
@@ -1232,7 +1679,6 @@
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
               Order Now
             </button>
-          </div>
           </div>
         </div>
 
@@ -1314,6 +1760,22 @@
   </footer>
 
   <!-- ============================
+       PRODUCT ZOOM LIGHTBOX
+  ============================ -->
+  <div class="product-lightbox" id="productLightbox">
+    <div class="lightbox-bg"></div>
+    <button class="lightbox-close" aria-label="Tutup">&times;</button>
+    <span class="lightbox-zoom-hint">Scroll / Pinch to Zoom • Double Tap 2x Zoom</span>
+    <div class="lightbox-content">
+      <img id="lightboxImg" src="" alt="Product Zoom View">
+    </div>
+    <div class="lightbox-nav">
+      <button class="active" data-view="front">Front</button>
+      <button data-view="back">Back</button>
+    </div>
+  </div>
+
+  <!-- ============================
        SIZE CHART MODAL POP-UP
   ============================ -->
   <div class="modal-overlay" id="sizeModal">
@@ -1381,6 +1843,27 @@
   <script>
     (function() {
       'use strict';
+
+      // === DARK MODE TOGGLE ===
+      var themeToggle = document.getElementById('themeToggle');
+      var html = document.documentElement;
+
+      // Load saved theme from localStorage
+      var savedTheme = localStorage.getItem('zale-theme');
+      if (savedTheme) {
+        html.setAttribute('data-theme', savedTheme);
+      }
+
+      themeToggle.addEventListener('click', function() {
+        var current = html.getAttribute('data-theme');
+        var next = current === 'dark' ? 'light' : 'dark';
+        if (next === 'light') {
+          html.removeAttribute('data-theme');
+        } else {
+          html.setAttribute('data-theme', 'dark');
+        }
+        localStorage.setItem('zale-theme', next);
+      });
 
       // === HAMBURGER MENU ===
       var hamburger = document.getElementById('hamburger');
@@ -1496,16 +1979,174 @@
       orderButtons.forEach(function(btn) {
         btn.addEventListener('click', function(e) {
           e.preventDefault();
-          // Find size select in same card
           var card = this.closest('.product-info');
           var selectEl = card.querySelector('.size-select');
           var size = selectEl.value;
           var product = this.getAttribute('data-product');
-          var waNumber = "6281394009760"; // Nomor WhatsApp Utama
+          var waNumber = "6281394009760";
           var message = "Hallo, saya mau order " + product + " size " + size;
           var waUrl = "https://wa.me/" + waNumber + "?text=" + encodeURIComponent(message);
           window.open(waUrl, '_blank', 'noopener,noreferrer');
         });
+      });
+
+      // === FRONT / BACK TOGGLE ===
+      var viewToggles = document.querySelectorAll('.view-toggle');
+      viewToggles.forEach(function(toggle) {
+        var container = toggle.closest('.product-img');
+        var buttons = toggle.querySelectorAll('button');
+        buttons.forEach(function(btn) {
+          btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var view = this.getAttribute('data-view');
+            buttons.forEach(function(b) { b.classList.remove('active'); });
+            this.classList.add('active');
+            if (view === 'back') {
+              container.classList.add('showing-back');
+            } else {
+              container.classList.remove('showing-back');
+            }
+          });
+        });
+      });
+
+      // === PRODUCT ZOOM LIGHTBOX ===
+      var lightbox = document.getElementById('productLightbox');
+      var lightboxImg = document.getElementById('lightboxImg');
+      var lightboxBg = lightbox.querySelector('.lightbox-bg');
+      var lightboxClose = lightbox.querySelector('.lightbox-close');
+      var lightboxNavBtns = lightbox.querySelectorAll('.lightbox-nav button');
+      var lightboxHint = lightbox.querySelector('.lightbox-zoom-hint');
+      var currentZoom = 1;
+      var currentFrontSrc = '';
+      var currentBackSrc = '';
+      var currentLightboxView = 'front';
+
+      // Open lightbox from zoom-hint button or product-img click
+      function openLightbox(frontSrc, backSrc, startView) {
+        currentFrontSrc = frontSrc;
+        currentBackSrc = backSrc;
+        currentLightboxView = startView || 'front';
+        lightboxImg.src = currentLightboxView === 'front' ? frontSrc : backSrc;
+        currentZoom = 1;
+        lightboxImg.style.transform = 'scale(1)';
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        // Update nav buttons
+        lightboxNavBtns.forEach(function(b) {
+          b.classList.toggle('active', b.getAttribute('data-view') === currentLightboxView);
+        });
+        // Show hint then fade
+        if (lightboxHint) {
+          lightboxHint.classList.remove('hidden');
+          setTimeout(function() { lightboxHint.classList.add('hidden'); }, 2500);
+        }
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+        currentZoom = 1;
+        lightboxImg.style.transform = 'scale(1)';
+      }
+
+      // Zoom hint buttons
+      document.querySelectorAll('.zoom-hint').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var front = this.getAttribute('data-front');
+          var back = this.getAttribute('data-back');
+          var container = this.closest('.product-img');
+          var currentView = container.classList.contains('showing-back') ? 'back' : 'front';
+          openLightbox(front, back, currentView);
+        });
+      });
+
+      // Also open lightbox when clicking on the product image itself
+      document.querySelectorAll('.product-img').forEach(function(imgContainer) {
+        imgContainer.addEventListener('click', function(e) {
+          // Don't open if clicking toggle buttons
+          if (e.target.closest('.view-toggle') || e.target.closest('.zoom-hint')) return;
+          var zoomBtn = imgContainer.querySelector('.zoom-hint');
+          if (!zoomBtn) return;
+          var front = zoomBtn.getAttribute('data-front');
+          var back = zoomBtn.getAttribute('data-back');
+          var currentView = imgContainer.classList.contains('showing-back') ? 'back' : 'front';
+          openLightbox(front, back, currentView);
+        });
+      });
+
+      // Close lightbox
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightboxBg.addEventListener('click', closeLightbox);
+
+      // Lightbox nav buttons (front/back)
+      lightboxNavBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var view = this.getAttribute('data-view');
+          currentLightboxView = view;
+          lightboxImg.src = view === 'front' ? currentFrontSrc : currentBackSrc;
+          currentZoom = 1;
+          lightboxImg.style.transform = 'scale(1)';
+          lightboxNavBtns.forEach(function(b) {
+            b.classList.toggle('active', b.getAttribute('data-view') === view);
+          });
+        });
+      });
+
+      // Desktop: mouse wheel zoom
+      lightbox.addEventListener('wheel', function(e) {
+        e.preventDefault();
+        var delta = e.deltaY > 0 ? -0.15 : 0.15;
+        currentZoom = Math.min(Math.max(currentZoom + delta, 1), 4);
+        lightboxImg.style.transform = 'scale(' + currentZoom + ')';
+      }, { passive: false });
+
+      // Mobile: pinch to zoom
+      var initialDist = 0;
+      var initialZoom = 1;
+
+      lightbox.addEventListener('touchstart', function(e) {
+        if (e.touches.length === 2) {
+          initialDist = Math.hypot(
+            e.touches[0].pageX - e.touches[1].pageX,
+            e.touches[0].pageY - e.touches[1].pageY
+          );
+          initialZoom = currentZoom;
+        }
+      }, { passive: true });
+
+      lightbox.addEventListener('touchmove', function(e) {
+        if (e.touches.length === 2) {
+          e.preventDefault();
+          var dist = Math.hypot(
+            e.touches[0].pageX - e.touches[1].pageX,
+            e.touches[0].pageY - e.touches[1].pageY
+          );
+          var scale = (dist / initialDist) * initialZoom;
+          currentZoom = Math.min(Math.max(scale, 1), 4);
+          lightboxImg.style.transform = 'scale(' + currentZoom + ')';
+        }
+      }, { passive: false });
+
+      // Double tap to zoom on mobile
+      var lastTap = 0;
+      lightboxImg.addEventListener('touchend', function(e) {
+        if (e.touches.length > 0) return;
+        var now = Date.now();
+        if (now - lastTap < 300) {
+          // Double tap: toggle between 1x and 2.5x
+          currentZoom = currentZoom > 1.5 ? 1 : 2.5;
+          lightboxImg.style.transform = 'scale(' + currentZoom + ')';
+        }
+        lastTap = now;
+      });
+
+      // Escape to close lightbox
+      window.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+          closeLightbox();
+        }
       });
 
     })();

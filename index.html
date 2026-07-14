@@ -863,6 +863,10 @@
       transition: transform 0.15s ease;
       user-select: none;
       -webkit-user-select: none;
+      /* GPU Acceleration for smooth zooming & dragging on low-spec devices */
+      backface-visibility: hidden;
+      perspective: 1000px;
+      transform: translate3d(0, 0, 0);
     }
 
     .lightbox-close {

@@ -380,24 +380,13 @@
     }
 
     .navbar-logo {
-      /*
-        Font logo menggunakan Celandine Outline (local) dengan fallback
-        Grenze Gotisch / UnifrakturCook dari Google Fonts.
-        Menggunakan efek outline stroke agar terlihat premium & modern.
-      */
-      font-family: 'Celandine Outline', 'Grenze Gotisch', 'UnifrakturCook', cursive;
-      font-size: 2.1rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.6rem;
       font-weight: 700;
-      letter-spacing: 1px;
-      color: transparent;
-      -webkit-text-stroke: 1.2px var(--text-primary);
+      letter-spacing: 6px;
+      color: var(--text-primary);
       text-decoration: none;
-      transition: -webkit-text-stroke-color 0.3s ease;
-      text-transform: lowercase;
-    }
-
-    .navbar-logo:hover {
-      -webkit-text-stroke-color: var(--accent-light);
+      transition: color 0.3s ease;
     }
 
     /* Dark mode toggle button */
@@ -428,6 +417,7 @@
       width: 18px;
       height: 18px;
       fill: var(--text-primary);
+      stroke: var(--text-primary);
       transition: fill 0.3s ease, transform 0.3s ease;
     }
 
@@ -1516,6 +1506,493 @@
       }
     }
 
+    /* Stock Urgency Label styling */
+    .stock-status {
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-top: 0.4rem;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .stock-status.available { color: #2e7d32; }
+    .stock-status.low { color: #d84315; }
+    .stock-status.out { color: #757575; }
+
+    /* Modal tabs styling */
+    .modal-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+      padding-bottom: 0.5rem;
+    }
+    .modal-tab-btn {
+      background: none;
+      border: none;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      padding: 0.4rem 0.8rem;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .modal-tab-btn.active {
+      color: var(--text-primary);
+    }
+    .modal-tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -9px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--text-primary);
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Calculator inputs styling */
+    .calc-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .calc-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .calc-label-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+    .calc-input-slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: rgba(128, 128, 128, 0.2);
+      outline: none;
+    }
+    .calc-input-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--text-primary);
+      cursor: pointer;
+      border: 2px solid var(--glass-border);
+      transition: transform 0.1s ease;
+    }
+    .calc-input-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+    .calc-result-box {
+      background: rgba(128, 128, 128, 0.08);
+      border-radius: 12px;
+      padding: 1.2rem;
+      text-align: center;
+      border: 1px dashed rgba(128, 128, 128, 0.2);
+    }
+    .calc-result-size {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin: 0.3rem 0;
+    }
+    .calc-result-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Shopping Cart Floating Button styling */
+    .cart-floating-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #1a1a1a;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    [data-theme="dark"] .cart-floating-btn {
+      background: #ffffff;
+      color: #1a1a1a;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+    .cart-floating-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+    }
+    .cart-floating-btn svg,
+    .cart-floating-btn svg path {
+      width: 22px;
+      height: 22px;
+      fill: currentColor !important;
+      stroke: none !important;
+    }
+    .cart-count {
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      background: #d84315;
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      border-radius: 50%;
+      min-width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 4px;
+      border: 2px solid #1a1a1a;
+    }
+    [data-theme="dark"] .cart-count {
+      border-color: #ffffff;
+    }
+
+    /* Cart Drawer styling */
+    .cart-drawer {
+      position: fixed;
+      inset: 0;
+      z-index: 2500;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .cart-drawer.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .cart-drawer-bg {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    .cart-drawer-box {
+      position: absolute;
+      top: 0;
+      right: -380px;
+      width: 100%;
+      max-width: 380px;
+      height: 100%;
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border-left: 1px solid var(--glass-border);
+      box-shadow: -8px 0 32px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-direction: column;
+      transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .cart-drawer.active .cart-drawer-box {
+      right: 0;
+    }
+    .cart-drawer-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .cart-drawer-header h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .cart-drawer-close {
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      font-weight: 300;
+      cursor: pointer;
+      color: var(--text-muted);
+      line-height: 1;
+    }
+    .cart-drawer-close:hover {
+      color: var(--text-primary);
+    }
+    .cart-drawer-scrollable {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .cart-drawer-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .cart-empty-message {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+    .cart-item-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: rgba(255, 255, 255, 0.25);
+      padding: 0.8rem;
+      border-radius: 12px;
+      border: 1px solid var(--glass-border);
+    }
+    [data-theme="dark"] .cart-item-row {
+      background: rgba(0, 0, 0, 0.2);
+    }
+    .cart-item-details {
+      flex: 1;
+    }
+    .cart-item-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .cart-item-size {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+    .cart-item-qty {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 0.4rem;
+    }
+    .cart-qty-btn {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1px solid var(--badge-border);
+      background: transparent;
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .cart-qty-btn:hover {
+      background: var(--table-hover);
+    }
+    .cart-item-remove {
+      background: none;
+      border: none;
+      color: #d84315;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .cart-drawer-footer {
+      padding: 1.5rem;
+      border-top: 1px solid rgba(128, 128, 128, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .cart-total-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+    .btn-checkout {
+      width: 100%;
+    }
+
+    /* Toast Notifications */
+    .toast-container {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      pointer-events: none;
+    }
+    .toast-item {
+      min-width: 280px;
+      max-width: 350px;
+      padding: 0.9rem 1.2rem;
+      border-radius: 12px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 8px 24px var(--glass-shadow);
+      color: var(--text-primary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      pointer-events: all;
+      transform: translateX(120%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+      opacity: 0;
+    }
+    .toast-item.show {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    .toast-icon {
+      color: #2e7d32;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    /* Cart Delivery Form */
+    .cart-form-section {
+      margin-top: 1rem;
+      border-top: 1px solid rgba(128, 128, 128, 0.15);
+      padding-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+    .cart-form-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-secondary);
+    }
+    .cart-form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .cart-form-row label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+    .cart-form-input, .cart-form-select, .cart-form-textarea {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.85rem;
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+      border: 1px solid var(--select-border);
+      background: var(--select-bg);
+      color: var(--select-color);
+      outline: none;
+      transition: border-color 0.25s ease;
+      width: 100%;
+    }
+    .cart-form-input:focus, .cart-form-select:focus, .cart-form-textarea:focus {
+      border-color: var(--text-primary);
+    }
+    .cart-form-textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+
+    /* Cart Promo Voucher */
+    .cart-promo-section {
+      display: flex;
+      gap: 8px;
+      margin-top: 0.8rem;
+      align-items: center;
+    }
+    .btn-apply-promo {
+      padding: 0.5rem 1rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border-radius: 8px;
+      border: 1px solid var(--badge-border);
+      background: transparent;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      min-height: 38px;
+      white-space: nowrap;
+    }
+    .btn-apply-promo:hover {
+      background: var(--table-hover);
+      border-color: var(--text-primary);
+    }
+    .promo-message {
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-top: 0.3rem;
+      display: none;
+    }
+    .promo-message.success { color: #2e7d32; display: block; }
+    .promo-message.error { color: #c62828; display: block; }
+
+    /* Available Promos Styling */
+    .cart-available-promos {
+      margin-top: 0.6rem;
+      padding: 0.6rem;
+      background: rgba(128,128,128,0.05);
+      border: 1px dashed var(--badge-border);
+      border-radius: 8px;
+    }
+    .cart-available-promos-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+    .promo-chips-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .promo-chip {
+      font-size: 0.68rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--badge-border);
+      color: var(--text-primary);
+      padding: 3px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      transition: all 0.2s ease;
+    }
+    .promo-chip:hover {
+      background: var(--text-primary);
+      color: var(--btn-text);
+      border-color: var(--text-primary);
+    }
+
     /* ============================
        PERFORMANCE: Reduced motion for low-spec devices
     ============================ */
@@ -1543,7 +2020,7 @@
   ============================ -->
   <nav class="navbar" id="navbar">
     <div class="container">
-      <a href="#home" class="navbar-logo">zale.</a>
+      <a href="#home" class="navbar-logo">ZALE</a>
 
       <div class="navbar-right">
         <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -1631,7 +2108,7 @@
             <p>"This is not fashion. This is a personal archive."</p>
             <div class="size-selector-wrapper">
               <span class="size-selector-label">Pilih Ukuran:</span>
-              <select class="size-select" aria-label="Pilih ukuran T-Shirt">
+              <select class="size-select" id="tshirtSizeSelect" aria-label="Pilih ukuran T-Shirt">
                 <option value="S">S</option>
                 <option value="M" selected>M</option>
                 <option value="L">L</option>
@@ -1639,10 +2116,13 @@
                 <option value="XXL">XXL</option>
               </select>
             </div>
+            <!-- Stock Status Urgency -->
+            <div class="stock-status available" id="tshirtStockStatus">● Stok tersedia</div>
+            <br>
             <button class="btn-size-chart-trigger">Lihat Panduan Ukuran</button>
-            <button class="btn-order shimmer-hover" data-product="Zale T-Shirt">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              Order Now
+            <button class="btn-order shimmer-hover btn-add-to-cart" data-product="Zale T-Shirt">
+              <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+              Tambah ke Keranjang
             </button>
           </div>
         </div>
@@ -1776,6 +2256,107 @@
   </div>
 
   <!-- ============================
+       SHOPPING CART FLOATING BUTTON & DRAWER
+  ============================ -->
+  <button class="cart-floating-btn" id="cartFloatingBtn" aria-label="Buka keranjang">
+    <svg viewBox="0 0 24 24"><path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-7.5-3h11.1c.8 0 1.5-.5 1.7-1.2L22 7H5.2L4 3H1v2h2l3.6 12H9.5z"/></svg>
+    <span class="cart-count" id="cartCount">0</span>
+  </button>
+
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-bg"></div>
+    <div class="cart-drawer-box">
+      <div class="cart-drawer-header">
+        <h3>Keranjang Belanja</h3>
+        <button class="cart-drawer-close" aria-label="Tutup keranjang">&times;</button>
+      </div>
+      
+      <!-- Scrollable Area for Cart items, form, and promos -->
+      <div class="cart-drawer-scrollable">
+        <div class="cart-drawer-body" id="cartDrawerBody">
+          <!-- Cart items go here -->
+          <div class="cart-empty-message">Keranjang Anda masih kosong.</div>
+        </div>
+        
+        <!-- Form Data Pengiriman (Kurir Pribadi / Ambil Sendiri) -->
+        <div class="cart-form-section" id="cartFormSection" style="display:none; padding: 0 1.5rem 1rem 1.5rem;">
+          <div class="cart-form-title">Data Pengantaran</div>
+          
+          <div class="cart-form-row" style="margin-bottom: 0.5rem;">
+            <label for="shippingName">Nama Penerima:</label>
+            <input type="text" class="cart-form-input" id="shippingName" placeholder="Masukkan nama Anda">
+          </div>
+          
+          <div class="cart-form-row" style="margin-bottom: 0.5rem;">
+            <label for="shippingMethod">Metode Pengiriman:</label>
+            <select class="cart-form-select" id="shippingMethod">
+              <option value="ambil">Ambil di Rumah (Self Pick-up) - Gratis</option>
+              <option value="zidan-ganteng">Diantar Zidan Ganteng - Gratis</option>
+              <option value="zidan-keren">Diantar Zidan Keren - Gratis</option>
+            </select>
+          </div>
+          
+          <div class="cart-form-row" id="addressRow" style="display:none;">
+            <label for="shippingAddress">Alamat Lengkap / Catatan:</label>
+            <textarea class="cart-form-textarea" id="shippingAddress" placeholder="Masukkan alamat lengkap pengantaran"></textarea>
+          </div>
+        </div>
+
+        <!-- Info Bonus Otomatis -->
+        <div class="cart-bonus-badge" style="background: rgba(255,255,255,0.04); border: 1px solid var(--badge-border); padding: 0.6rem; border-radius: 8px; margin: 0 1.5rem 1rem 1.5rem; font-size: 0.72rem; text-align: center; color: var(--text-primary);" id="cartBonusBadge">
+          ✨ <strong>Bonus Otomatis:</strong> Setiap pembelian baju sudah otomatis mendapatkan Free Exclusive Sticker ZALE!
+        </div>
+
+        <!-- Voucher Section Wrapper inside scrollable area -->
+        <div class="cart-promo-container" id="cartPromoContainer" style="display:none; padding: 0 1.5rem 1rem 1.5rem;">
+          <div class="cart-promo-section">
+            <input type="text" class="cart-form-input" id="promoInput" placeholder="Masukkan Kode Promo" style="text-transform: uppercase;">
+            <button class="btn-apply-promo" id="applyPromoBtn">Apply</button>
+          </div>
+          <div class="promo-message" id="promoMessage"></div>
+
+          <!-- Promo list chips -->
+          <div class="cart-available-promos" style="margin-top: 0.6rem;">
+            <div class="cart-available-promos-title">Promo Aktif (Klik untuk pakai):</div>
+            <div class="promo-chips-container">
+              <span class="promo-chip" title="Dapatkan 1x Extra Sticker Pack Tambahan!" onclick="document.getElementById('promoInput').value='ZALESTICKER'; document.getElementById('applyPromoBtn').click();">✨ ZALESTICKER</span>
+              <span class="promo-chip" title="Dapatkan Special Sticker Pack Edisi Terbatas! (Min. 2 Pcs)" onclick="document.getElementById('promoInput').value='ZALEPACK'; document.getElementById('applyPromoBtn').click();">🔥 ZALEPACK</span>
+              <span class="promo-chip" title="Gratis Ongkir Pengantaran Zidan!" onclick="document.getElementById('promoInput').value='ZALEFREE'; document.getElementById('applyPromoBtn').click();">🚚 ZALEFREE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer for sticky price breakdown and checkout button -->
+      <div class="cart-drawer-footer">
+        <!-- Price Details Breakdown -->
+        <div class="cart-total-row" style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.5rem;">
+          <span>Subtotal (Nett):</span>
+          <span id="cartSubtotal">Rp 0</span>
+        </div>
+        <div class="cart-total-row" style="font-size: 0.82rem; color: var(--text-muted);">
+          <span>Biaya Pengantaran:</span>
+          <span id="cartShippingFee">Rp 0</span>
+        </div>
+        <div class="cart-total-row" style="font-size: 0.82rem; color: var(--text-muted); display: none;" id="discountRow">
+          <span>Potongan Promo:</span>
+          <span id="cartDiscount">-Rp 0</span>
+        </div>
+        <div class="cart-total-row" style="border-top: 1px dashed rgba(128,128,128,0.2); padding-top: 0.5rem; margin-top: 0.3rem; margin-bottom: 0.5rem;">
+          <span>Total Bayar:</span>
+          <strong id="cartTotalPay" style="font-size: 1.1rem; color: var(--text-primary);">Rp 0</strong>
+        </div>
+        <button class="btn btn-primary btn-checkout" id="checkoutBtn">
+          Kirim Order ke WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ============================
        SIZE CHART MODAL POP-UP
   ============================ -->
   <div class="modal-overlay" id="sizeModal">
@@ -1785,54 +2366,106 @@
         <h3 class="modal-title">Panduan Ukuran (Size Chart)</h3>
         <button class="modal-close modal-close-x" aria-label="Tutup">&times;</button>
       </div>
+      <!-- Modal Tabs Toggle -->
+      <div class="modal-tabs">
+        <button class="modal-tab-btn active" data-tab="size-table-tab">Tabel Ukuran</button>
+        <button class="modal-tab-btn" data-tab="size-calculator-tab">Rekomendasi Ukuran</button>
+      </div>
+
       <div class="modal-body">
-        <div class="size-table-container">
-          <table class="size-table">
-            <thead>
-              <tr>
-                <th>Size</th>
-                <th>Panjang (cm)</th>
-                <th>Lebar Dada (cm)</th>
-                <th>Panjang Lengan (cm)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>S</td>
-                <td>68</td>
-                <td>48</td>
-                <td>20</td>
-              </tr>
-              <tr>
-                <td>M</td>
-                <td>70</td>
-                <td>50</td>
-                <td>21</td>
-              </tr>
-              <tr>
-                <td>L</td>
-                <td>72</td>
-                <td>52</td>
-                <td>22</td>
-              </tr>
-              <tr>
-                <td>XL</td>
-                <td>74</td>
-                <td>54</td>
-                <td>23</td>
-              </tr>
-              <tr>
-                <td>XXL</td>
-                <td>76</td>
-                <td>56</td>
-                <td>24</td>
-              </tr>
-            </tbody>
-          </table>
+        <!-- Tab content 1: Size Table -->
+        <div class="tab-content active" id="size-table-tab">
+          <div class="size-table-container">
+            <table class="size-table">
+              <thead>
+                <tr>
+                  <th>Size</th>
+                  <th>Panjang (cm)</th>
+                  <th>Lebar Dada (cm)</th>
+                  <th>Panjang Lengan (cm)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>S</td>
+                  <td>68</td>
+                  <td>48</td>
+                  <td>20</td>
+                </tr>
+                <tr>
+                  <td>M</td>
+                  <td>70</td>
+                  <td>50</td>
+                  <td>21</td>
+                </tr>
+                <tr>
+                  <td>L</td>
+                  <td>72</td>
+                  <td>52</td>
+                  <td>22</td>
+                </tr>
+                <tr>
+                  <td>XL</td>
+                  <td>74</td>
+                  <td>54</td>
+                  <td>23</td>
+                </tr>
+                <tr>
+                  <td>XXL</td>
+                  <td>76</td>
+                  <td>56</td>
+                  <td>24</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab content 2: Size Calculator -->
+        <div class="tab-content" id="size-calculator-tab">
+          <div class="calc-form">
+            <div class="calc-row">
+              <div class="calc-label-row">
+                <span>Tinggi Badan:</span>
+                <span id="heightVal">170 cm</span>
+              </div>
+              <input type="range" class="calc-input-slider" id="heightSlider" min="140" max="200" value="170">
+            </div>
+            
+            <div class="calc-row">
+              <div class="calc-label-row">
+                <span>Berat Badan:</span>
+                <span id="weightVal">65 kg</span>
+              </div>
+              <input type="range" class="calc-input-slider" id="weightSlider" min="35" max="120" value="65">
+            </div>
+            
+            <div class="calc-result-box">
+              <span>Rekomendasi Ukuran Anda:</span>
+              <div class="calc-result-size" id="calcRecommendedSize">M</div>
+              <div class="calc-result-desc" id="calcRecommendedDesc">Aesthetic oversized fit.</div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="modal-footer">
         <button class="btn-modal-close modal-close">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================
+       ADD TO CART CONFIRMATION POPUP MODAL
+  ============================ -->
+  <div class="modal-overlay" id="cartAddModal">
+    <div class="modal-overlay-bg"></div>
+    <div class="modal-box" style="max-width: 420px; text-align: center; padding: 2rem;">
+      <div style="font-size: 3rem; margin-bottom: 1rem;">🛍️</div>
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">Berhasil Ditambahkan</h3>
+      <p id="cartAddMessage" style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.8rem;"></p>
+      <div style="display: flex; gap: 10px; justify-content: center;">
+        <button class="btn-modal-close" id="btnCartContinue" style="padding: 0.6rem 1.2rem; font-size: 0.8rem; border-radius: 50px; cursor: pointer; border: 1px solid var(--badge-border); background: transparent; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; min-height: 40px;">Lanjut Belanja</button>
+        <button class="btn btn-primary" id="btnCartView" style="padding: 0.6rem 1.5rem; font-size: 0.8rem; border-radius: 50px; cursor: pointer; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; min-height: 40px;">Lihat Keranjang</button>
       </div>
     </div>
   </div>
@@ -1974,21 +2607,529 @@
         }
       });
 
-      // === DYNAMIC WHATSAPP ORDER ===
-      var orderButtons = document.querySelectorAll('.btn-order');
-      orderButtons.forEach(function(btn) {
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
-          var card = this.closest('.product-info');
-          var selectEl = card.querySelector('.size-select');
-          var size = selectEl.value;
-          var product = this.getAttribute('data-product');
-          var waNumber = "6281394009760";
-          var message = "Hallo, saya mau order " + product + " size " + size;
-          var waUrl = "https://wa.me/" + waNumber + "?text=" + encodeURIComponent(message);
-          window.open(waUrl, '_blank', 'noopener,noreferrer');
+      // === INTERACTIVE SIZE GUIDE CALCULATOR ===
+      var heightSlider = document.getElementById('heightSlider');
+      var weightSlider = document.getElementById('weightSlider');
+      var heightVal = document.getElementById('heightVal');
+      var weightVal = document.getElementById('weightVal');
+      var calcRecommendedSize = document.getElementById('calcRecommendedSize');
+      var calcRecommendedDesc = document.getElementById('calcRecommendedDesc');
+
+      function calculateSizeRecommendation() {
+        var h = parseInt(heightSlider.value);
+        var w = parseInt(weightSlider.value);
+        heightVal.innerText = h + " cm";
+        weightVal.innerText = w + " kg";
+
+        var recommended = "";
+        var desc = "";
+
+        if (w < 50) {
+          recommended = "S";
+          desc = "Slightly loose streetwear fit.";
+        } else if (w >= 50 && w < 62) {
+          if (h < 165) {
+            recommended = "S";
+            desc = "Comfortable regular-relaxed fit.";
+          } else {
+            recommended = "M";
+            desc = "Standard fit, perfect length.";
+          }
+        } else if (w >= 62 && w < 74) {
+          if (h < 172) {
+            recommended = "M";
+            desc = "Loose streetwear fit.";
+          } else {
+            recommended = "L";
+            desc = "Perfect aesthetic oversized drop shoulder.";
+          }
+        } else if (w >= 74 && w < 86) {
+          if (h < 180) {
+            recommended = "L";
+            desc = "Classic baggy look.";
+          } else {
+            recommended = "XL";
+            desc = "Ideal oversized statement cut.";
+          }
+        } else {
+          recommended = "XXL";
+          desc = "Ultra-oversized street silhouette.";
+        }
+
+        calcRecommendedSize.innerText = recommended;
+        calcRecommendedDesc.innerText = desc;
+      }
+
+      if (heightSlider && weightSlider) {
+        heightSlider.addEventListener('input', calculateSizeRecommendation);
+        weightSlider.addEventListener('input', calculateSizeRecommendation);
+        calculateSizeRecommendation(); // initial run
+      }
+
+      // === SIZE CHART MODAL TABS ===
+      var modalTabBtns = document.querySelectorAll('.modal-tab-btn');
+      modalTabBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var targetTabId = this.getAttribute('data-tab');
+          
+          // Toggle tab button active class
+          modalTabBtns.forEach(function(b) { b.classList.remove('active'); });
+          this.classList.add('active');
+          
+          // Toggle tab content active class
+          var contents = document.querySelectorAll('#sizeModal .tab-content');
+          contents.forEach(function(content) {
+            content.classList.remove('active');
+            if (content.getAttribute('id') === targetTabId) {
+              content.classList.add('active');
+            }
+          });
         });
       });
+
+      // === STOCK STATUS URGENCY INDICATOR ===
+      var productStock = {
+        'Zale T-Shirt': {
+          'S': 8,
+          'M': 3,
+          'L': 14,
+          'XL': 2,
+          'XXL': 0
+        }
+      };
+
+      var tshirtSizeSelect = document.getElementById('tshirtSizeSelect');
+      var tshirtStockStatus = document.getElementById('tshirtStockStatus');
+
+      function updateStockStatus() {
+        if (!tshirtSizeSelect || !tshirtStockStatus) return;
+        var size = tshirtSizeSelect.value;
+        var stock = productStock['Zale T-Shirt'][size];
+        
+        tshirtStockStatus.style.opacity = '0';
+        setTimeout(function() {
+          if (stock === 0) {
+            tshirtStockStatus.className = "stock-status out";
+            tshirtStockStatus.innerHTML = "● Sold Out (Habis)";
+          } else if (stock <= 3) {
+            tshirtStockStatus.className = "stock-status low";
+            tshirtStockStatus.innerHTML = "● Tersisa sedikit! (Tinggal " + stock + " pcs)";
+          } else {
+            tshirtStockStatus.className = "stock-status available";
+            tshirtStockStatus.innerHTML = "● Stok tersedia";
+          }
+          tshirtStockStatus.style.opacity = '1';
+        }, 150);
+      }
+
+      if (tshirtSizeSelect) {
+        tshirtSizeSelect.addEventListener('change', updateStockStatus);
+        updateStockStatus(); // initial run
+      }
+
+      // === TOAST NOTIFICATION POPUP ===
+      function showToast(message) {
+        var container = document.getElementById('toastContainer');
+        if (!container) return;
+        
+        var toast = document.createElement('div');
+        toast.className = 'toast-item';
+        toast.innerHTML = '<span class="toast-icon">✔</span><span>' + message + '</span>';
+        container.appendChild(toast);
+        
+        // Trigger slide-in
+        setTimeout(function() { toast.classList.add('show'); }, 10);
+        
+        // Auto fade out & remove after 2.5s
+        setTimeout(function() {
+          toast.classList.remove('show');
+          setTimeout(function() { toast.remove(); }, 350);
+        }, 2500);
+      }
+
+      // === SHOPPING CART DRAWER SYSTEM ===
+      var cart = [];
+      var appliedPromo = '';
+      var shippingMethod = 'ambil';
+      var basePrice = 130000; // Nett price per T-shirt
+
+      var cartDrawer = document.getElementById('cartDrawer');
+      var cartDrawerBg = cartDrawer.querySelector('.cart-drawer-bg');
+      var cartDrawerClose = cartDrawer.querySelector('.cart-drawer-close');
+      var cartDrawerBody = document.getElementById('cartDrawerBody');
+      var cartFloatingBtn = document.getElementById('cartFloatingBtn');
+      var cartCountLabel = document.getElementById('cartCount');
+      
+      // Form elements
+      var cartFormSection = document.getElementById('cartFormSection');
+      var shippingNameInput = document.getElementById('shippingName');
+      var shippingMethodSelect = document.getElementById('shippingMethod');
+      var addressRow = document.getElementById('addressRow');
+      var shippingAddressInput = document.getElementById('shippingAddress');
+      
+      // Voucher elements
+      var promoInput = document.getElementById('promoInput');
+      var applyPromoBtn = document.getElementById('applyPromoBtn');
+      var promoMessage = document.getElementById('promoMessage');
+      
+      // Price breakdown elements
+      var cartSubtotalLabel = document.getElementById('cartSubtotal');
+      var cartShippingFeeLabel = document.getElementById('cartShippingFee');
+      var discountRow = document.getElementById('discountRow');
+      var cartDiscountLabel = document.getElementById('cartDiscount');
+      var cartTotalPayLabel = document.getElementById('cartTotalPay');
+      var checkoutBtn = document.getElementById('checkoutBtn');
+
+      function formatRupiah(num) {
+        return 'Rp ' + num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      }
+
+      function saveCart() {
+        localStorage.setItem('zale-cart', JSON.stringify(cart));
+        updateCartUI();
+      }
+
+      function loadCart() {
+        var saved = localStorage.getItem('zale-cart');
+        if (saved) {
+          try {
+            cart = JSON.parse(saved);
+          } catch(e) {
+            cart = [];
+          }
+        }
+        updateCartUI();
+      }
+
+      function openCartDrawer() {
+        cartDrawer.classList.add('active');
+      }
+
+      function closeCartDrawer() {
+        cartDrawer.classList.remove('active');
+      }
+
+      if (cartFloatingBtn) {
+        cartFloatingBtn.addEventListener('click', openCartDrawer);
+      }
+      if (cartDrawerClose) {
+        cartDrawerClose.addEventListener('click', closeCartDrawer);
+      }
+      if (cartDrawerBg) {
+        cartDrawerBg.addEventListener('click', closeCartDrawer);
+      }
+
+      // === ADD TO CART MODAL ===
+      var cartAddModal = document.getElementById('cartAddModal');
+      var btnCartContinue = document.getElementById('btnCartContinue');
+      var btnCartView = document.getElementById('btnCartView');
+      var cartAddModalBg = cartAddModal.querySelector('.modal-overlay-bg');
+
+      function openCartAddModal(productName, size) {
+        var msgEl = document.getElementById('cartAddMessage');
+        if (msgEl) {
+          msgEl.innerHTML = '<strong>' + productName + '</strong> (Size: <strong>' + size + '</strong>) telah dimasukkan ke keranjang.';
+        }
+        cartAddModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeCartAddModal() {
+        cartAddModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      if (btnCartContinue) {
+        btnCartContinue.addEventListener('click', closeCartAddModal);
+      }
+      if (cartAddModalBg) {
+        cartAddModalBg.addEventListener('click', closeCartAddModal);
+      }
+      if (btnCartView) {
+        btnCartView.addEventListener('click', function() {
+          closeCartAddModal();
+          openCartDrawer();
+        });
+      }
+
+      // Handle delivery fields visibility
+      if (shippingMethodSelect) {
+        shippingMethodSelect.addEventListener('change', function() {
+          shippingMethod = this.value;
+          if (shippingMethod === 'ambil') {
+            addressRow.style.display = 'none';
+          } else {
+            addressRow.style.display = 'block';
+          }
+          updateCartUI();
+        });
+      }
+
+      // Promo apply handler
+      if (applyPromoBtn) {
+        applyPromoBtn.addEventListener('click', function() {
+          var code = promoInput.value.trim().toUpperCase();
+          promoMessage.className = 'promo-message';
+          
+          if (cart.length === 0) {
+            promoMessage.className = 'promo-message error';
+            promoMessage.innerText = 'Keranjang belanja masih kosong!';
+            return;
+          }
+
+          if (code === '') {
+            appliedPromo = '';
+            promoMessage.className = 'promo-message';
+            promoMessage.innerText = '';
+            updateCartUI();
+            return;
+          }
+
+          if (code === 'ZALESTICKER') {
+            appliedPromo = 'ZALESTICKER';
+            promoMessage.className = 'promo-message success';
+            promoMessage.innerText = 'Promo Berhasil: 1x Extra Sticker Pack Tambahan!';
+          } else if (code === 'ZALEPACK') {
+            var totalQty = cart.reduce(function(acc, item) { return acc + item.qty; }, 0);
+            if (totalQty < 2) {
+              promoMessage.className = 'promo-message error';
+              promoMessage.innerText = 'Gagal: Minimal order 2 item untuk promo ZALEPACK!';
+              appliedPromo = '';
+            } else {
+              appliedPromo = 'ZALEPACK';
+              promoMessage.className = 'promo-message success';
+              promoMessage.innerText = 'Promo Berhasil: Special Sticker Pack Edisi Terbatas!';
+            }
+          } else if (code === 'ZALEFREE') {
+            appliedPromo = 'ZALEFREE';
+            promoMessage.className = 'promo-message success';
+            promoMessage.innerText = 'Promo Berhasil: Gratis Ongkir Pengantaran Zidan!';
+          } else {
+            appliedPromo = '';
+            promoMessage.className = 'promo-message error';
+            promoMessage.innerText = 'Kode promo tidak valid!';
+          }
+          updateCartUI();
+        });
+      }
+
+      function addToCart(productName, size) {
+        var existing = cart.find(function(item) {
+          return item.name === productName && item.size === size;
+        });
+
+        if (existing) {
+          existing.qty += 1;
+        } else {
+          cart.push({
+            name: productName,
+            size: size,
+            qty: 1
+          });
+        }
+        saveCart();
+        // Tampilkan modal popup konfirmasi alih-alih membuka laci
+        openCartAddModal(productName, size);
+      }
+
+      function removeFromCart(index) {
+        cart.splice(index, 1);
+        saveCart();
+      }
+
+      function changeQty(index, delta) {
+        cart[index].qty += delta;
+        if (cart[index].qty <= 0) {
+          cart.splice(index, 1);
+        }
+        saveCart();
+      }
+
+      function updateCartUI() {
+        var totalQty = 0;
+        cartDrawerBody.innerHTML = '';
+
+        var bonusBadge = document.getElementById('cartBonusBadge');
+        var promoContainer = document.getElementById('cartPromoContainer');
+
+        if (cart.length === 0) {
+          cartDrawerBody.innerHTML = '<div class="cart-empty-message">Keranjang Anda masih kosong.</div>';
+          cartCountLabel.innerText = '0';
+          cartCountLabel.style.display = 'none';
+          cartFormSection.style.display = 'none';
+          if (bonusBadge) bonusBadge.style.display = 'none';
+          if (promoContainer) promoContainer.style.display = 'none';
+          
+          cartSubtotalLabel.innerText = 'Rp 0';
+          cartShippingFeeLabel.innerText = 'Gratis';
+          discountRow.style.display = 'none';
+          cartTotalPayLabel.innerText = 'Rp 0';
+          checkoutBtn.disabled = true;
+          return;
+        }
+
+        cartCountLabel.style.display = 'flex';
+        cartFormSection.style.display = 'block';
+        if (bonusBadge) bonusBadge.style.display = 'block';
+        if (promoContainer) promoContainer.style.display = 'block';
+        checkoutBtn.disabled = false;
+
+        cart.forEach(function(item, index) {
+          totalQty += item.qty;
+
+          var itemRow = document.createElement('div');
+          itemRow.className = 'cart-item-row';
+          itemRow.innerHTML = 
+            '<div class="cart-item-details">' +
+              '<div class="cart-item-title">' + item.name + '</div>' +
+              '<div class="cart-item-size">Size: ' + item.size + '</div>' +
+              '<div class="cart-item-qty">' +
+                '<button class="cart-qty-btn btn-minus">-</button>' +
+                '<span>' + item.qty + '</span>' +
+                '<button class="cart-qty-btn btn-plus">+</button>' +
+              '</div>' +
+            '</div>' +
+            '<button class="cart-item-remove">Hapus</button>';
+
+          // Hook events
+          itemRow.querySelector('.btn-minus').addEventListener('click', function() {
+            changeQty(index, -1);
+          });
+          itemRow.querySelector('.btn-plus').addEventListener('click', function() {
+            changeQty(index, 1);
+          });
+          itemRow.querySelector('.cart-item-remove').addEventListener('click', function() {
+            removeFromCart(index);
+          });
+
+          cartDrawerBody.appendChild(itemRow);
+        });
+
+        cartCountLabel.innerText = totalQty;
+
+        // Calculate Pricing
+        var subtotal = totalQty * basePrice;
+        var shippingFee = 0; // Local delivery is free
+        var discount = 0; // Strictly nett, no monetary discounts
+
+        var totalPay = subtotal + shippingFee - discount;
+
+        // Update UI Text Labels
+        cartSubtotalLabel.innerText = formatRupiah(subtotal);
+        cartShippingFeeLabel.innerText = 'Gratis';
+        discountRow.style.display = 'none'; // No discount label displayed
+
+        cartTotalPayLabel.innerText = formatRupiah(totalPay);
+      }
+
+      // Add to cart buttons listeners
+      var addToCartBtns = document.querySelectorAll('.btn-add-to-cart');
+      addToCartBtns.forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var card = this.closest('.product-card');
+          var selectEl = card.querySelector('.size-select');
+          var size = selectEl ? selectEl.value : 'M';
+          var productName = this.getAttribute('data-product');
+          
+          if (productStock[productName] && productStock[productName][size] === 0) {
+            alert('Maaf, ukuran ini sedang habis terjual (Sold Out).');
+            return;
+          }
+          
+          addToCart(productName, size);
+        });
+      });
+
+      // Checkout handler (WhatsApp compile)
+      if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', function() {
+          if (cart.length === 0) return;
+
+          var name = shippingNameInput.value.trim();
+          if (name === '') {
+            alert('Silakan masukkan Nama Penerima terlebih dahulu.');
+            shippingNameInput.focus();
+            return;
+          }
+
+          var address = '';
+          if (shippingMethod !== 'ambil') {
+            address = shippingAddressInput.value.trim();
+            if (address === '') {
+              alert('Silakan masukkan Alamat Lengkap pengantaran.');
+              shippingAddressInput.focus();
+              return;
+            }
+          }
+
+          var waNumber = "6281394009760"; // Main ZALE WhatsApp number
+          var message = "Hallo ZALE, saya mau order:\n\n";
+          var totalItems = 0;
+          
+          cart.forEach(function(item) {
+            message += "• *" + item.qty + "x " + item.name + "* (Size: *" + item.size + "*)\n";
+            totalItems += item.qty;
+          });
+
+          // Automatic bonuses (1 sticker pack per shirt purchased)
+          message += "\n*Bonus Otomatis*:\n";
+          message += "• " + totalItems + "x Exclusive ZALE Sticker (Gratis)\n";
+
+          // Gift Promo Applied
+          if (appliedPromo && appliedPromo !== '') {
+            message += "\n*Bonus Promo (" + appliedPromo + ")*:\n";
+            if (appliedPromo === 'ZALESTICKER') {
+              message += "• 1x Extra Sticker Pack (Gratis)\n";
+            } else if (appliedPromo === 'ZALEPACK') {
+              message += "• 1x Special Sticker Pack Edisi Terbatas (Gratis)\n";
+            } else if (appliedPromo === 'ZALEFREE') {
+              message += "• Layanan Pengantaran Premium Zidan (Gratis Ongkir)\n";
+            }
+          }
+
+          // Shipping Info
+          message += "\n*Data Pengantaran*:\n";
+          message += "• Nama: " + name + "\n";
+          
+          var methodText = "Ambil di Rumah (Self Pick-up)";
+          if (shippingMethod === 'zidan-ganteng') methodText = "Diantar Zidan Ganteng";
+          else if (shippingMethod === 'zidan-keren') methodText = "Diantar Zidan Keren";
+          
+          message += "• Metode: " + methodText + "\n";
+          if (shippingMethod !== 'ambil') {
+            message += "• Alamat: " + address + "\n";
+          }
+
+          // Pricing Breakdown
+          var subtotal = totalItems * basePrice;
+          var shippingFee = 0; // Local delivery is free
+          var finalTotal = subtotal;
+
+          message += "\n*Rincian Pembayaran*:\n";
+          message += "• Subtotal: " + formatRupiah(subtotal) + "\n";
+          message += "• Ongkir: Gratis\n";
+          message += "• *Total Bayar: " + formatRupiah(finalTotal) + "*\n\n";
+          message += "Mohon diproses ya, terima kasih.";
+
+          var waUrl = "https://wa.me/" + waNumber + "?text=" + encodeURIComponent(message);
+          window.open(waUrl, '_blank', 'noopener,noreferrer');
+          
+          // Clear cart after checkout redirect
+          cart = [];
+          appliedPromo = '';
+          if (promoInput) promoInput.value = '';
+          if (promoMessage) promoMessage.innerText = '';
+          if (shippingNameInput) shippingNameInput.value = '';
+          if (shippingAddressInput) shippingAddressInput.value = '';
+          if (shippingMethodSelect) shippingMethodSelect.value = 'ambil';
+          saveCart();
+          closeCartDrawer();
+        });
+      }
+
+      // Load cart on startup
+      loadCart();
 
       // === FRONT / BACK TOGGLE ===
       var viewToggles = document.querySelectorAll('.view-toggle');
@@ -2017,10 +3158,24 @@
       var lightboxClose = lightbox.querySelector('.lightbox-close');
       var lightboxNavBtns = lightbox.querySelectorAll('.lightbox-nav button');
       var lightboxHint = lightbox.querySelector('.lightbox-zoom-hint');
+      
       var currentZoom = 1;
+      var currentX = 0;
+      var currentY = 0;
+      var startX = 0;
+      var startY = 0;
+      var isDragging = false;
       var currentFrontSrc = '';
       var currentBackSrc = '';
       var currentLightboxView = 'front';
+
+      function updateTransform() {
+        if (currentZoom <= 1) {
+          currentX = 0;
+          currentY = 0;
+        }
+        lightboxImg.style.transform = 'translate(' + currentX + 'px, ' + currentY + 'px) scale(' + currentZoom + ')';
+      }
 
       // Open lightbox from zoom-hint button or product-img click
       function openLightbox(frontSrc, backSrc, startView) {
@@ -2029,13 +3184,18 @@
         currentLightboxView = startView || 'front';
         lightboxImg.src = currentLightboxView === 'front' ? frontSrc : backSrc;
         currentZoom = 1;
-        lightboxImg.style.transform = 'scale(1)';
+        currentX = 0;
+        currentY = 0;
+        lightboxImg.style.transition = 'transform 0.15s ease';
+        updateTransform();
         lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
+        
         // Update nav buttons
         lightboxNavBtns.forEach(function(b) {
           b.classList.toggle('active', b.getAttribute('data-view') === currentLightboxView);
         });
+        
         // Show hint then fade
         if (lightboxHint) {
           lightboxHint.classList.remove('hidden');
@@ -2047,7 +3207,10 @@
         lightbox.classList.remove('active');
         document.body.style.overflow = '';
         currentZoom = 1;
-        lightboxImg.style.transform = 'scale(1)';
+        currentX = 0;
+        currentY = 0;
+        lightboxImg.style.transition = 'transform 0.15s ease';
+        updateTransform();
       }
 
       // Zoom hint buttons
@@ -2065,7 +3228,6 @@
       // Also open lightbox when clicking on the product image itself
       document.querySelectorAll('.product-img').forEach(function(imgContainer) {
         imgContainer.addEventListener('click', function(e) {
-          // Don't open if clicking toggle buttons
           if (e.target.closest('.view-toggle') || e.target.closest('.zoom-hint')) return;
           var zoomBtn = imgContainer.querySelector('.zoom-hint');
           if (!zoomBtn) return;
@@ -2087,7 +3249,10 @@
           currentLightboxView = view;
           lightboxImg.src = view === 'front' ? currentFrontSrc : currentBackSrc;
           currentZoom = 1;
-          lightboxImg.style.transform = 'scale(1)';
+          currentX = 0;
+          currentY = 0;
+          lightboxImg.style.transition = 'transform 0.15s ease';
+          updateTransform();
           lightboxNavBtns.forEach(function(b) {
             b.classList.toggle('active', b.getAttribute('data-view') === view);
           });
@@ -2097,17 +3262,54 @@
       // Desktop: mouse wheel zoom
       lightbox.addEventListener('wheel', function(e) {
         e.preventDefault();
-        var delta = e.deltaY > 0 ? -0.15 : 0.15;
+        var delta = e.deltaY > 0 ? -0.2 : 0.2;
+        var prevZoom = currentZoom;
         currentZoom = Math.min(Math.max(currentZoom + delta, 1), 4);
-        lightboxImg.style.transform = 'scale(' + currentZoom + ')';
+        
+        // If zooming out to 1, reset offsets
+        if (currentZoom === 1) {
+          currentX = 0;
+          currentY = 0;
+        }
+        updateTransform();
       }, { passive: false });
 
-      // Mobile: pinch to zoom
+      // Dragging / Panning logic
+      lightbox.addEventListener('mousedown', function(e) {
+        if (currentZoom <= 1) return;
+        if (e.target.closest('.lightbox-close') || e.target.closest('.lightbox-nav')) return;
+        isDragging = true;
+        startX = e.clientX - currentX;
+        startY = e.clientY - currentY;
+        lightboxImg.style.transition = 'none'; // disable transition for smooth drag
+      });
+
+      window.addEventListener('mousemove', function(e) {
+        if (!isDragging) return;
+        currentX = e.clientX - startX;
+        currentY = e.clientY - startY;
+        updateTransform();
+      });
+
+      window.addEventListener('mouseup', function() {
+        if (isDragging) {
+          isDragging = false;
+          lightboxImg.style.transition = 'transform 0.15s ease';
+        }
+      });
+
+      // Mobile touch events: supports pinch-to-zoom & touch drag
       var initialDist = 0;
       var initialZoom = 1;
 
       lightbox.addEventListener('touchstart', function(e) {
-        if (e.touches.length === 2) {
+        if (e.touches.length === 1 && currentZoom > 1) {
+          isDragging = true;
+          startX = e.touches[0].clientX - currentX;
+          startY = e.touches[0].clientY - currentY;
+          lightboxImg.style.transition = 'none';
+        } else if (e.touches.length === 2) {
+          isDragging = false;
           initialDist = Math.hypot(
             e.touches[0].pageX - e.touches[1].pageX,
             e.touches[0].pageY - e.touches[1].pageY
@@ -2117,7 +3319,12 @@
       }, { passive: true });
 
       lightbox.addEventListener('touchmove', function(e) {
-        if (e.touches.length === 2) {
+        if (isDragging && e.touches.length === 1) {
+          e.preventDefault();
+          currentX = e.touches[0].clientX - startX;
+          currentY = e.touches[0].clientY - startY;
+          updateTransform();
+        } else if (e.touches.length === 2) {
           e.preventDefault();
           var dist = Math.hypot(
             e.touches[0].pageX - e.touches[1].pageX,
@@ -2125,9 +3332,16 @@
           );
           var scale = (dist / initialDist) * initialZoom;
           currentZoom = Math.min(Math.max(scale, 1), 4);
-          lightboxImg.style.transform = 'scale(' + currentZoom + ')';
+          updateTransform();
         }
       }, { passive: false });
+
+      lightbox.addEventListener('touchend', function(e) {
+        if (isDragging) {
+          isDragging = false;
+          lightboxImg.style.transition = 'transform 0.15s ease';
+        }
+      });
 
       // Double tap to zoom on mobile
       var lastTap = 0;
@@ -2135,9 +3349,11 @@
         if (e.touches.length > 0) return;
         var now = Date.now();
         if (now - lastTap < 300) {
-          // Double tap: toggle between 1x and 2.5x
           currentZoom = currentZoom > 1.5 ? 1 : 2.5;
-          lightboxImg.style.transform = 'scale(' + currentZoom + ')';
+          currentX = 0;
+          currentY = 0;
+          lightboxImg.style.transition = 'transform 0.15s ease';
+          updateTransform();
         }
         lastTap = now;
       });
